@@ -1,11 +1,15 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
 security:
+    encoders:
+        AppBundle\Entity\User:
+            algorithm: bcrypt
 
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
+        user_provider:
+            entity:
+                class: AppBundle:User
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -15,10 +19,16 @@ security:
 
         main:
             anonymous: ~
-            # activate different ways to authenticate
+            pattern: ^/
+            form_login:
+                provider: user_provider
+                login_path: user_login
+                check_path: user_check
+            logout:
+                path: user_logout
 
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
-
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-            #form_login: ~
+    access_control:
+        - { path: ^/register , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login , roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/project/manage, roles: [ ROLE_ADMIN, ROLE_SADMIN] }
+        - { path: ^/, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SADMIN] }

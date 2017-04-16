@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -25,6 +27,7 @@ class User
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
      */
     private $username;
 
@@ -32,6 +35,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\Email()
+     * @Assert\NotBlank()
      */
     private $email;
 
@@ -42,6 +47,26 @@ class User
      */
     private $password;
 
+    /**
+     * @Assert\Length(min="4")
+     */
+    private $password_raw;
+
+    /**
+     * @return mixed
+     */
+    public function getPasswordRaw()
+    {
+        return $this->password_raw;
+    }
+
+    /**
+     * @param mixed $password_raw
+     */
+    public function setPasswordRaw($password_raw)
+    {
+        $this->password_raw = $password_raw;
+    }
 
     /**
      * Get id
@@ -123,6 +148,50 @@ class User
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Returns the roles granted to the user.
+     *
+     * <code>
+     * public function getRoles()
+     * {
+     *     return array('ROLE_USER');
+     * }
+     * </code>
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return (Role|string)[] The user roles
+     */
+    public function getRoles()
+    {
+        return ['ROLE_USER'];
+    }
+
+    /**
+     * Returns the salt that was originally used to encode the password.
+     *
+     * This can return null if the password was not encoded using a salt.
+     *
+     * @return string|null The salt
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+
     }
 }
 
