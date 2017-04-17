@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -51,6 +52,18 @@ class User implements UserInterface
      * @Assert\Length(min="4")
      */
     private $password_raw;
+
+    /**
+     * @var Role[]|ArrayCollection
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Role", inversedBy="users")
+     * @ORM\JoinTable(name="user_roles", joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}, inverseJoinColumns={@ORM\JoinColumn(name="role_id", referencedColumnName="id")})
+     */
+    private $roles;
+
+    public function __construct()
+    {
+        $this->roles = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -168,7 +181,9 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return array_map(function (Role $role) {
+            return $role->getName();
+        }, $this->roles->toArray());
     }
 
     /**
@@ -193,5 +208,12 @@ class User implements UserInterface
     {
 
     }
+
+    public function addRoles(Role $role)
+    {
+        $this->roles->add($role);
+    }
+
+
 }
 

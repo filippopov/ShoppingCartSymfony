@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Role;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -57,6 +58,9 @@ class SecurityController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $encoder = $this->get('security.password_encoder');
+
+            $userRole = $this->getDoctrine()->getRepository(Role::class)->findOneBy(['name' => 'ROLE_USER']);
+            $user->addRoles($userRole);
 
             $user->setPassword(
                 $encoder->encodePassword($user, $user->getPasswordRaw())
