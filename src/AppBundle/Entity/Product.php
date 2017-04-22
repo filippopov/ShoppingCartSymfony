@@ -2,7 +2,10 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\ManyToOne;
 
 /**
  * product
@@ -77,20 +80,37 @@ class Product
      */
     private $updatedAt;
 
-
     /**
      * @var int
      *
-     * @ORM\Column(name="category_id", type="integer")
+     * @ManyToOne(targetEntity="AppBundle\Entity\Categories", inversedBy="product")
      */
-    private $categoryId;
+    private $category;
+
+    /**
+     * @var Orders_Products[]|ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Orders_Products", mappedBy="product")
+     */
+    private $ordersProduct;
+
+    /**
+     * @var Promotions[]|ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Promotions", mappedBy="product")
+     */
+    private $promotion;
+
+    public function __construct()
+    {
+        $this->ordersProduct = new ArrayCollection();
+        $this->promotion = new ArrayCollection();
+    }
 
     /**
      * @return int
      */
     public function getCategoryId()
     {
-        return $this->categoryId;
+        return $this->category;
     }
 
     /**
@@ -98,9 +118,8 @@ class Product
      */
     public function setCategoryId($categoryId)
     {
-        $this->categoryId = $categoryId;
+        $this->category = $categoryId;
     }
-
 
     /**
      * Get id

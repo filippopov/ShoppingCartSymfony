@@ -21,54 +21,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3128">
-              <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+            <state relative-caret-position="280">
+              <caret line="68" column="22" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Version20170417075112.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170417075112.php">
+      <file leaf-file-name="Categories.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Categories.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-95">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="331">
+              <caret line="44" column="22" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="22" />
               <folding>
-                <marker date="1492626376467" expanded="true" signature="585:790" ph="CREATE TABLE... role" />
-                <marker date="1492626376467" expanded="true" signature="817:1059" ph="CREATE TABLE... user_roles" />
-                <marker date="1492626376467" expanded="true" signature="1086:1186" ph="ALTER TABLE user_roles... " />
-                <marker date="1492626376467" expanded="true" signature="1213:1313" ph="ALTER TABLE user_roles... " />
-                <marker date="1492626376467" expanded="true" signature="1667:1726" ph="ALTER TABLE user_roles... " />
-                <marker date="1492626376467" expanded="true" signature="1753:1768" ph="DROP TABLE r... " />
-                <marker date="1492626376467" expanded="true" signature="1795:1816" ph="DROP TABLE u... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Version20170416091633.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170416091633.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <marker date="1492626376446" expanded="true" signature="585:903" ph="CREATE TABLE... user" />
-                <marker date="1492626376446" expanded="true" signature="1257:1272" ph="DROP TABLE u... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SecurityController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
-              <folding>
-                <element signature="e#40#66#0#PHP" expanded="true" />
+                <element signature="e#36#84#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,53 +46,84 @@
       <file leaf-file-name="Product.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Product.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Version20170419192707.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170419192707.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="280">
+              <caret line="101" column="22" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="22" />
               <folding>
-                <marker date="1492630027629" expanded="true" signature="585:1079" ph="CREATE TABLE... product" />
-                <marker date="1492630027629" expanded="true" signature="1433:1451" ph="DROP TABLE p... " />
+                <element signature="e#36#84#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Security/register.html.twig">
+      <file leaf-file-name="Promotions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Promotions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="280">
+              <caret line="31" column="30" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php">
+      <file leaf-file-name="Role.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Role.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+            <state relative-caret-position="382">
+              <caret line="37" column="22" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Customers.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Customers.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="45" column="22" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="22" />
               <folding>
-                <element signature="e#40#99#0#PHP" expanded="false" />
+                <element signature="e#36#84#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Security/login.html.twig">
+      <file leaf-file-name="Orders.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Orders.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+            <state relative-caret-position="280">
+              <caret line="67" column="22" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="22" />
+              <folding>
+                <element signature="e#36#84#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Orders_Products.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Orders_Products.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="28" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Payments.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Payments.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="38" column="37" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Addresses.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Addresses.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="47" column="32" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -146,10 +146,16 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Resources/views/Security/login.html.twig" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Role.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/product.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Orders_Products.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Promotions.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Payments.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Categories.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Customers.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Orders.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Product.php" />
       </list>
     </option>
@@ -192,8 +198,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -423,7 +429,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Symfony Doctrine" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
@@ -490,23 +496,24 @@
       <workItem from="1492328719824" duration="12133000" />
       <workItem from="1492408026885" duration="7385000" />
       <workItem from="1492627588357" duration="2249000" />
+      <workItem from="1492848304673" duration="10243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21767000" />
+    <option name="totallyTimeSpent" value="32010000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25587606" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.258547" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2340195" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2340195" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -535,46 +542,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3128">
-          <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/doctrine/collections/lib/Doctrine/Common/Collections/ArrayCollection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4046">
-          <caret line="256" column="20" selection-start-line="256" selection-start-column="20" selection-end-line="256" selection-end-column="20" />
-          <folding>
-            <element signature="e#6#987#0#PHP" expanded="false" />
-            <element signature="e#1029#1047#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170417075112.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1492626376467" expanded="true" signature="585:790" ph="CREATE TABLE... role" />
-            <marker date="1492626376467" expanded="true" signature="817:1059" ph="CREATE TABLE... user_roles" />
-            <marker date="1492626376467" expanded="true" signature="1086:1186" ph="ALTER TABLE user_roles... " />
-            <marker date="1492626376467" expanded="true" signature="1213:1313" ph="ALTER TABLE user_roles... " />
-            <marker date="1492626376467" expanded="true" signature="1667:1726" ph="ALTER TABLE user_roles... " />
-            <marker date="1492626376467" expanded="true" signature="1753:1768" ph="DROP TABLE r... " />
-            <marker date="1492626376467" expanded="true" signature="1795:1816" ph="DROP TABLE u... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/security.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -590,9 +561,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
           <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
-          <folding>
-            <element signature="e#40#66#0#PHP" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -659,10 +628,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1492626376446" expanded="true" signature="585:903" ph="CREATE TABLE... user" />
-            <marker date="1492626376446" expanded="true" signature="1257:1272" ph="DROP TABLE u... " />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -670,7 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -678,9 +643,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="57" column="55" selection-start-line="57" selection-start-column="55" selection-end-line="57" selection-end-column="55" />
-          <folding>
-            <element signature="e#40#66#0#PHP" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -775,15 +738,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Role.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="39" column="45" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -795,14 +749,6 @@
             <element signature="e#6#987#0#PHP" expanded="false" />
             <element signature="e#1029#1047#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3128">
-          <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -824,59 +770,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
-          <folding>
-            <element signature="e#40#66#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Product.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="103" column="0" selection-start-line="103" selection-start-column="0" selection-end-line="103" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170416091633.php">
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170417075112.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1492626376446" expanded="true" signature="585:903" ph="CREATE TABLE... user" />
-            <marker date="1492626376446" expanded="true" signature="1257:1272" ph="DROP TABLE u... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170417075112.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1492626376467" expanded="true" signature="585:790" ph="CREATE TABLE... role" />
-            <marker date="1492626376467" expanded="true" signature="817:1059" ph="CREATE TABLE... user_roles" />
-            <marker date="1492626376467" expanded="true" signature="1086:1186" ph="ALTER TABLE user_roles... " />
-            <marker date="1492626376467" expanded="true" signature="1213:1313" ph="ALTER TABLE user_roles... " />
-            <marker date="1492626376467" expanded="true" signature="1667:1726" ph="ALTER TABLE user_roles... " />
-            <marker date="1492626376467" expanded="true" signature="1753:1768" ph="DROP TABLE r... " />
-            <marker date="1492626376467" expanded="true" signature="1795:1816" ph="DROP TABLE u... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170419184314.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170419184314.php" />
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Resources/views/Security/register.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -885,7 +787,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170419193231.php">
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170419193231.php" />
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170422092945.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170422084611.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -897,10 +808,187 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170422094716.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170416091633.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170422095938.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170422100244.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-250">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/SecurityController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="64" column="31" selection-start-line="64" selection-start-column="31" selection-end-line="64" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/DoctrineMigrations/Version20170422110351.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1492630027629" expanded="true" signature="585:1079" ph="CREATE TABLE... product" />
-            <marker date="1492630027629" expanded="true" signature="1433:1451" ph="DROP TABLE p... " />
+            <element signature="e#42#89#0#PHP" expanded="false" />
+            <marker date="1492859031114" expanded="true" signature="585:923" ph="CREATE TABLE... addresses" />
+            <marker date="1492859031114" expanded="true" signature="950:1161" ph="CREATE TABLE... categories" />
+            <marker date="1492859031114" expanded="true" signature="1188:1452" ph="CREATE TABLE... customers" />
+            <marker date="1492859031114" expanded="true" signature="1479:1838" ph="CREATE TABLE... orders" />
+            <marker date="1492859031114" expanded="true" signature="1865:2170" ph="CREATE TABLE... orders__products" />
+            <marker date="1492859031114" expanded="true" signature="2197:2537" ph="CREATE TABLE... payments" />
+            <marker date="1492859031114" expanded="true" signature="2564:3104" ph="CREATE TABLE... product" />
+            <marker date="1492859031114" expanded="true" signature="3131:3533" ph="CREATE TABLE... promotions" />
+            <marker date="1492859031114" expanded="true" signature="3560:3765" ph="CREATE TABLE... role" />
+            <marker date="1492859031114" expanded="true" signature="3792:4110" ph="CREATE TABLE... user" />
+            <marker date="1492859031114" expanded="true" signature="4137:4379" ph="CREATE TABLE... user_roles" />
+            <marker date="1492859031114" expanded="true" signature="4406:4511" ph="ALTER TABLE orders... " />
+            <marker date="1492859031114" expanded="true" signature="4538:4647" ph="ALTER TABLE orders__products... " />
+            <marker date="1492859031114" expanded="true" signature="4674:4786" ph="ALTER TABLE orders__products... " />
+            <marker date="1492859031114" expanded="true" signature="4813:4914" ph="ALTER TABLE payments... " />
+            <marker date="1492859031114" expanded="true" signature="4941:5048" ph="ALTER TABLE product... " />
+            <marker date="1492859031114" expanded="true" signature="5075:5181" ph="ALTER TABLE promotions... " />
+            <marker date="1492859031114" expanded="true" signature="5208:5318" ph="ALTER TABLE promotions... " />
+            <marker date="1492859031114" expanded="true" signature="5345:5445" ph="ALTER TABLE promotions... " />
+            <marker date="1492859031114" expanded="true" signature="5472:5572" ph="ALTER TABLE user_roles... " />
+            <marker date="1492859031114" expanded="true" signature="5599:5699" ph="ALTER TABLE user_roles... " />
+            <marker date="1492859031114" expanded="true" signature="6053:6109" ph="ALTER TABLE product... " />
+            <marker date="1492859031114" expanded="true" signature="6136:6195" ph="ALTER TABLE promotions... " />
+            <marker date="1492859031114" expanded="true" signature="6222:6277" ph="ALTER TABLE orders... " />
+            <marker date="1492859031114" expanded="true" signature="6304:6369" ph="ALTER TABLE orders__products... " />
+            <marker date="1492859031114" expanded="true" signature="6396:6453" ph="ALTER TABLE payments... " />
+            <marker date="1492859031114" expanded="true" signature="6480:6545" ph="ALTER TABLE orders__products... " />
+            <marker date="1492859031114" expanded="true" signature="6572:6631" ph="ALTER TABLE promotions... " />
+            <marker date="1492859031114" expanded="true" signature="6658:6717" ph="ALTER TABLE user_roles... " />
+            <marker date="1492859031114" expanded="true" signature="6744:6803" ph="ALTER TABLE promotions... " />
+            <marker date="1492859031114" expanded="true" signature="6830:6889" ph="ALTER TABLE user_roles... " />
+            <marker date="1492859031114" expanded="true" signature="6916:6936" ph="DROP TABLE a... " />
+            <marker date="1492859031114" expanded="true" signature="6963:6984" ph="DROP TABLE c... " />
+            <marker date="1492859031114" expanded="true" signature="7011:7031" ph="DROP TABLE c... " />
+            <marker date="1492859031114" expanded="true" signature="7058:7075" ph="DROP TABLE o... " />
+            <marker date="1492859031114" expanded="true" signature="7102:7129" ph="DROP TABLE o... " />
+            <marker date="1492859031114" expanded="true" signature="7156:7175" ph="DROP TABLE p... " />
+            <marker date="1492859031114" expanded="true" signature="7202:7220" ph="DROP TABLE p... " />
+            <marker date="1492859031114" expanded="true" signature="7247:7268" ph="DROP TABLE p... " />
+            <marker date="1492859031114" expanded="true" signature="7295:7310" ph="DROP TABLE r... " />
+            <marker date="1492859031114" expanded="true" signature="7337:7352" ph="DROP TABLE u... " />
+            <marker date="1492859031114" expanded="true" signature="7379:7400" ph="DROP TABLE u... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Addresses.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="47" column="32" selection-start-line="47" selection-start-column="31" selection-end-line="47" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Categories.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="44" column="22" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="22" />
+          <folding>
+            <element signature="e#36#84#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Customers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="45" column="22" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="22" />
+          <folding>
+            <element signature="e#36#84#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Orders.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="67" column="22" selection-start-line="67" selection-start-column="20" selection-end-line="67" selection-end-column="22" />
+          <folding>
+            <element signature="e#36#84#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Orders_Products.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="26" selection-end-line="9" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Payments.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="38" column="37" selection-start-line="38" selection-start-column="36" selection-end-line="38" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Product.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="101" column="22" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="22" />
+          <folding>
+            <element signature="e#36#84#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Promotions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="31" column="30" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Role.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="37" column="22" selection-start-line="37" selection-start-column="20" selection-end-line="37" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="68" column="22" selection-start-line="68" selection-start-column="20" selection-end-line="68" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

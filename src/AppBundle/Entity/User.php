@@ -60,9 +60,16 @@ class User implements UserInterface
      */
     private $roles;
 
+    /**
+     * @var Promotions[]|ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Promotions", mappedBy="user")
+     */
+    private $promotion;
+
     public function __construct()
     {
         $this->roles = new ArrayCollection();
+        $this->promotion = new ArrayCollection();
     }
 
     /**
