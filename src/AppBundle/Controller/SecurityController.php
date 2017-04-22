@@ -72,7 +72,7 @@ class SecurityController extends Controller
 
             $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
             $this->get('security.token_storage')->setToken($token);
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('all_products');
         }
 
         return [
