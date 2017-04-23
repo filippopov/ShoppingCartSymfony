@@ -2,16 +2,23 @@
 
 {% block body %}
     {{ parent() }}
-    <a href="{{ path('user_register') }}">Register</a>
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path('user_login') }}" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password" />
-        <button type="submit">login</button>
-    </form>
+    <div class="container">
+        <div class="wrapper">
+            <form class="{{ path('user_login') }}" method="post">
+                <h2 class="form-signin-heading">Please login</h2>
+                <input type="text" class="form-control" id="username" name="_username" placeholder="Username or Email" value="{{ last_username }}"/>
+                <input type="password" class="form-control" id="password" name="_password" placeholder="Password" />
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
+
+
+
+
+

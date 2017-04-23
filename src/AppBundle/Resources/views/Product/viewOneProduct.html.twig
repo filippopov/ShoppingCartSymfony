@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ asset('images/' ~ product.image) }}" alt="{{ product.title }} title" class="thumbnail img-responsive">
+            </div>
+
+            <div class="col-md-8">
+
+                <h4>
+                    {% if stock.hasLowStock() %}
+                        <span class="label label-warning">Low stock</span>
+                    {% endif %}
+
+                    {% if stock.outOfStock() %}
+                        <span class="label label-danger">Out of stock</span>
+                    {% endif %}
+
+                    {% if stock.inStock() %}
+                        <span class="label label-success">Available</span>
+                    {% endif %}
+                </h4>
+
+                <h3>{{ product.title }}</h3>
+                <p>{{ product.description }}</p>
+
+                {%  if stock.inStock() or stock.hasLowStock() %}
+                    <a href="#" class="btn btn-default btn-sm">Add to cart</a>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

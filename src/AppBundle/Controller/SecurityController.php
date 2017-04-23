@@ -8,6 +8,7 @@ use AppBundle\Form\UserType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
@@ -19,6 +20,12 @@ class SecurityController extends Controller
      */
     public function loginAction(Request $request)
     {
+        $token = $this->get('security.token_storage')->getToken();
+        $user = $token->getUser();
+
+        if ($user  != 'anon.') {
+            return new RedirectResponse($this->generateUrl('all_products'));
+        }
 
         $authenticationUtils = $this->get('security.authentication_utils');
 
@@ -46,10 +53,16 @@ class SecurityController extends Controller
      * @Template()
      * @param Request $request
      *
-     * @return array
      */
     public function registerAction(Request $request)
     {
+        $token = $this->get('security.token_storage')->getToken();
+        $user = $token->getUser();
+
+        if ($user  != 'anon.') {
+            return new RedirectResponse($this->generateUrl('all_products'));
+        }
+
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
 

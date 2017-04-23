@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ProductController extends Controller
 {
@@ -23,31 +24,28 @@ class ProductController extends Controller
             'products' => $products
         ];
     }
+
+    /**
+     * @Route("/product/{slug}", name="get_product")
+     * @Method("GET")
+     * @Template()
+     */
+    public function viewOneProductAction($slug)
+    {
+        $product = $this->getDoctrine()->getRepository(Product::class)->findOneBy(['slug' => $slug]);
+
+        if (! $product) {
+            return new RedirectResponse($this->generateUrl('all_products'));
+        }
+
+        $stock = $this->get('app.check_stock');
+        $stock->setStock($product->getStock());
+
+        return [
+            'product' => $product,
+            'stock' => $stock
+        ];
+    }
 }
 
 
-///**
-// * @Route("/products", name="all_products")
-// *
-// * @return Response
-// */
-//public function viewAll()
-//{
-////        $products = array_filter($this->getDoctrine()
-////            ->getRepository(Product::class)
-////            ->findBy([], ['price'=>'asc', 'name' => 'asc']),
-////        function(Product $product) {
-////            return $product->getPrice() > 18;
-////        });
-//
-//    $products = $this->getDoctrine()
-//        ->getRepository(Product::class)
-//        ->findBy([], ['price'=>'asc', 'name' => 'asc']);
-//
-//    return $this->render(
-//        'products/view_all.html.twig',
-//        [
-//            'products' => $products
-//        ]
-//    );
-//}
