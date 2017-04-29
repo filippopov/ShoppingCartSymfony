@@ -14,6 +14,22 @@
     <body>
         {% block body %}
             {% include "@App/partials/navigation.html.twig" %}
+
+            <div class="container">
+                {% for msg in app.session.flashBag.get('success') %}
+                    <div class="alert alert-dismissible alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+
+                {% for msg in app.session.flashBag.get('error') %}
+                    <div class="alert alert-dismissible alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ msg }}
+                    </div>
+                {% endfor %}
+            </div>
         {% endblock %}
         {% block javascripts %}
             <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js"></script>

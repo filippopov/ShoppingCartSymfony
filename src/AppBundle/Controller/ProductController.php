@@ -30,7 +30,7 @@ class ProductController extends Controller
      * @Method("GET")
      * @Template()
      */
-    public function viewOneProductAction($slug)
+    public function viewOneProductAction(string $slug)
     {
         $product = $this->getDoctrine()->getRepository(Product::class)->findOneBy(['slug' => $slug]);
 

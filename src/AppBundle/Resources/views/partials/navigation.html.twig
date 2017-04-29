@@ -18,7 +18,7 @@
                     <li><a href=" {{ path("user_login") }}">Sign In</a></li>
                     <li><a href=" {{ path("user_register") }}">Register</a></li>
                 {% endif %}
-                <li><a href=""><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Cart <span class="badge"></span></a></li>
+                <li><a href="{{ path('show_cart') }}"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Cart ({{ basket.itemCount }}) <span class="badge"></span></a></li>
 
             </ul>
         </div>

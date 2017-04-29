@@ -1,0 +1,52 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                {% if basket.itemCount %}
+                    <div class="well well-sm">
+                        <!-- Table -->
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in basket.all %}
+                                    <tr>
+                                        <td><a href="{{ path("get_product", {'slug' : item.slug})}}" title="{{ item.title }}">{{ item.title }}</a></td>
+                                        <td> $ {{ item.price | number_format(2) }} </td>
+                                        <td> {{ item.getQuantity }} (temp)</td>
+                                    </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+
+                    <p>You have no items in your cart. <a href="{{ path('/') }}">Start shopping now</a></p>
+
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                {% if basket.itemCount and basket.subTotal %}
+                    <div class="well well-sm">
+                        <h4>Cart summary</h4>
+                        <hr>
+
+                        {%  include '@App/partials/summary.html.twig' %}
+                        <a href="#" class="btn btn-default">Checkout</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,19 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cost summary</th>
+        </tr>
+    </thead>
+    <tr>
+        <td>Sub total</td>
+        <td>$ {{ basket.subTotal | number_format(2) }}</td>
+    </tr>
+    <tr>
+        <td>Shipping</td>
+        <td>$ 5.00</td>
+    </tr>
+    <tr>
+        <td class="success">Total</td>
+        <td class="success"> $ {{ basket.subTotalAll | number_format(2) }} </td>
+    </tr>
+</table>
