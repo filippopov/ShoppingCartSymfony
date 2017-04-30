@@ -1,0 +1,117 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {{ parent() }}
+        <form action="{{ path('create_order') }}" method="post">
+            {{ form_widget(customerForm._token) }}
+            {{ form_widget(addressesForm._token) }}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="col-md-6">
+                            <h3>Your details</h3>
+                            <hr>
+                            {#<div class="form-group">#}
+                                {#<label for="email">Email</label>#}
+                                {#<input type="email" name="email" id="email" class="form-control">#}
+                            {#</div>#}
+                            <div class="form-group {% if not customerForm.email.vars.valid %}has-error{% endif %}">
+                                {{ form_label(customerForm.email) }}
+                                {{ form_widget(customerForm.email, { 'attr': {'class': 'form-control'} }) }}
+                                {{ form_errors(customerForm.email) }}
+                            </div>
+                            {#<div class="form-group">#}
+                                {#<label for="name">Name</label>#}
+                                {#<input type="text" name="name" id="name" class="form-control">#}
+                            {#</div>#}
+                            <div class="form-group {% if not customerForm.name.vars.valid %}has-error{% endif %}">
+                                {{ form_label(customerForm.name) }}
+                                {{ form_widget(customerForm.name, { 'attr': {'class': 'form-control'} }) }}
+                                {{ form_errors(customerForm.name) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h3>Shipping details</h3>
+                            <hr>
+                            {#<div class="form-group">#}
+                                {#<label for="address1">Address line 1</label>#}
+                                {#<input type="text" name="address1" id="address1" class="form-control">#}
+                            {#</div>#}
+                            <div class="form-group {% if not addressesForm.address1.vars.valid %}has-error{% endif %}">
+                                {{ form_label(addressesForm.address1) }}
+                                {{ form_widget(addressesForm.address1, { 'attr': {'class': 'form-control'} }) }}
+                                {{ form_errors(addressesForm.address1) }}
+                            </div>
+
+                            {#<div class="form-group">#}
+                                {#<label for="address2">Address line 2</label>#}
+                                {#<input type="text" name="address2" id="address2" class="form-control" placeholder="Optional">#}
+                            {#</div>#}
+                            <div class="form-group {% if not addressesForm.address2.vars.valid %}has-error{% endif %}">
+                                {{ form_label(addressesForm.address2) }}
+                                {{ form_widget(addressesForm.address2, { 'attr': {'class': 'form-control', 'placeholder': 'Optional'} }) }}
+                                {{ form_errors(addressesForm.address2) }}
+                            </div>
+                            {#<div class="form-group">#}
+                                {#<label for="city">Home city</label>#}
+                                {#<input type="text" name="city" id="city" class="form-control">#}
+                            {#</div>#}
+                            <div class="form-group {% if not addressesForm.city.vars.valid %}has-error{% endif %}">
+                                {{ form_label(addressesForm.city) }}
+                                {{ form_widget(addressesForm.city, { 'attr': {'class': 'form-control'} }) }}
+                                {{ form_errors(addressesForm.city) }}
+                            </div>
+
+
+                            {#<div class="form-group">#}
+                                {#<label for="postalcode">Postal code</label>#}
+                                {#<input type="text" name="postal_code" id="postalcode" class="form-control">#}
+                            {#</div>#}
+
+                            <div class="form-group {% if not addressesForm.postalCode.vars.valid %}has-error{% endif %}">
+                                {{ form_label(addressesForm.postalCode) }}
+                                {{ form_widget(addressesForm.postalCode, { 'attr': {'class': 'form-control'} }) }}
+                                {{ form_errors(addressesForm.postalCode) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="well">
+                            <h4>Your order</h4>
+                            <hr>
+
+                            {% include '@App/partials/content.html.twig' %}
+                            {% include '@App/partials/summary.html.twig' %}
+
+                            <button class="btn btn-default" type="submit">Place order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+{% endblock %}
+
+{#'addressesForm' => $addressesForm->createView(),#}
+{#'customerForm' => $customerForm->createView(),#}
+
+{#{{ form_start(form) }}#}
+            {#{{ form_widget(form._token) }}#}
+{#<div class="form-group {% if not form.username.vars.valid %}has-error{% endif %}">#}
+    {#{{ form_errors(form.username) }}#}
+    {#{{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Username'} }) }}#}
+{#</div>#}
+{#<div class="form-group {% if not form.email.vars.valid %}has-error{% endif %}">#}
+    {#{{ form_errors(form.email) }}#}
+    {#{{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email'} }) }}#}
+{#</div>#}
+{#<div class="form-group {% if not form.password_raw.vars.valid %}has-error{% endif %}">#}
+    {#{{ form_errors(form.password_raw.first) }}#}
+    {#{{ form_widget(form.password_raw.first, { 'attr': {'class': 'form-control', 'placeholder': 'Password'} }) }}#}
+{#</div>#}
+{#<div class="form-group {% if not form.password_raw.vars.valid %}has-error{% endif %}">#}
+    {#{{ form_errors(form.password_raw.second) }}#}
+    {#{{ form_widget(form.password_raw.second, { 'attr': {'class': 'form-control', 'placeholder': 'Repeat Password'} }) }}#}
+{#</div>#}
+{#{{ form_widget(form.submit, { 'attr': {'class': 'btn btn-lg btn-primary btn-block'},  'label': 'Register'  }) }}#}
+            {#{{ form_end(form) }}#}

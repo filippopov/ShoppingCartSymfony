@@ -8,14 +8,22 @@
             <h2 class="form-signin-heading">Please register</h2>
             {{ form_start(form) }}
             {{ form_widget(form._token) }}
-            {{ form_errors(form.username) }}
-            {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Username'} }) }}
-            {{ form_errors(form.email) }}
-            {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email'} }) }}
-            {{ form_errors(form.password_raw.first) }}
-            {{ form_widget(form.password_raw.first, { 'attr': {'class': 'form-control', 'placeholder': 'Password'} }) }}
-            {{ form_errors(form.password_raw.second) }}
-            {{ form_widget(form.password_raw.second, { 'attr': {'class': 'form-control', 'placeholder': 'Repeat Password'} }) }}
+            <div class="form-group {% if not form.username.vars.valid %}has-error{% endif %}">
+                {{ form_widget(form.username, { 'attr': {'class': 'form-control', 'placeholder': 'Username'} }) }}
+                {{ form_errors(form.username) }}
+            </div>
+            <div class="form-group {% if not form.email.vars.valid %}has-error{% endif %}">
+                {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder': 'Email'} }) }}
+                {{ form_errors(form.email) }}
+            </div>
+            <div class="form-group {% if not form.password_raw.vars.valid %}has-error{% endif %}">
+                {{ form_widget(form.password_raw.first, { 'attr': {'class': 'form-control', 'placeholder': 'Password'} }) }}
+                {{ form_errors(form.password_raw.first) }}
+            </div>
+            <div class="form-group {% if not form.password_raw.vars.valid %}has-error{% endif %}">
+                {{ form_widget(form.password_raw.second, { 'attr': {'class': 'form-control', 'placeholder': 'Repeat Password'} }) }}
+                {{ form_errors(form.password_raw.second) }}
+            </div>
             {{ form_widget(form.submit, { 'attr': {'class': 'btn btn-lg btn-primary btn-block'},  'label': 'Register'  }) }}
             {{ form_end(form) }}
         </div>

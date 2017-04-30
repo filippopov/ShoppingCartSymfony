@@ -27,8 +27,7 @@ class UserType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options' => [
                     'required' =>  false,
-                    'label'=> 'Password',
-
+                    'label'=> 'Password'
                 ],
                 'second_options' =>[
                     'required' =>  false,
@@ -55,6 +54,4 @@ class UserType extends AbstractType
     {
         return 'appbundle_user';
     }
-
-
 }

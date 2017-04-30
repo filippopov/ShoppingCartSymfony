@@ -26,7 +26,7 @@ class CartController extends Controller
     /**
      * @Route("/cart-add/{slug}/{quantity}", name="cart_add")
      */
-    public function add(string $slug, int $quantity)
+    public function addAction(string $slug, int $quantity)
     {
         $basket = $this->get('app.basket');
 
@@ -53,7 +53,7 @@ class CartController extends Controller
      * @Route("/cart-update/{slug}", name="cart_update")
      * @Method("POST")
      */
-    public function update(string $slug, Request $request)
+    public function updateAction(string $slug, Request $request)
     {
         $basket = $this->get('app.basket');
 

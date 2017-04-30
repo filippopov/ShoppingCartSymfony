@@ -1,0 +1,13 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Item(s)</th>
+        </tr>
+    </thead>
+    {% for item in basket.all %}
+    <tr>
+        <td>{{ item.title }}</td>
+        <td>{{ item.quantity }}</td>
+    </tr>
+    {% endfor %}
+</table>

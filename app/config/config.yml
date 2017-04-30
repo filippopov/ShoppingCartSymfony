@@ -40,6 +40,8 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         basket: '@app.basket'
+    form_themes:
+        - 'AppBundle:FormTheme:error.html.twig'
 
 # Doctrine Configuration
 doctrine:
