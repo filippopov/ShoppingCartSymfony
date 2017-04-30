@@ -135,14 +135,14 @@ class Basket
             $total = $total + ($item->getPrice() * $item->getQuantity());
         }
 
-        $this->stockCost =  (int) $total;
+        $this->stockCost =  (float) $total;
 
-        return (int)$total;
+        return (float) $total;
     }
 
     public function subTotalAll($shippingCost = 5)
     {
-        return (int) $this->subTotal() + $shippingCost;
+        return (float) $this->subTotal() + $shippingCost;
     }
 
     /**

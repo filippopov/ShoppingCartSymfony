@@ -35,7 +35,7 @@ class ProductController extends Controller
         $product = $this->getDoctrine()->getRepository(Product::class)->findOneBy(['slug' => $slug]);
 
         if (! $product) {
-            return new RedirectResponse($this->generateUrl('all_products'));
+            return $this->redirectToRoute('all_products');
         }
 
         $stock = $this->get('app.check_stock');

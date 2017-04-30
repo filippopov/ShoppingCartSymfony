@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 class CartController extends Controller
 {
@@ -32,19 +33,46 @@ class CartController extends Controller
         $product = $this->getDoctrine()->getRepository(Product::class)->findOneBy(['slug' => $slug]);
 
         if (! $product) {
-            return new RedirectResponse($this->generateUrl('all_products'));
+            return $this->redirectToRoute('all_products');
         }
 
         try {
             $basket->add($product, $quantity);
 
-            $this->addFlash("success", "Product {$product->getTitle()}, successfully add in your cart!");
+            $this->addFlash("success", "Product: {$product->getTitle()}, successfully add in your cart!");
         } catch (QuantityExceededException $e) {
-            $this->addFlash("error", "Product {$product->getTitle()}, no enough quantity");
+            $this->addFlash("error", "Product: {$product->getTitle()}, no enough quantity");
 
             return $this->redirectToRoute("get_product", ['slug' => $slug]);
         }
 
-        return new RedirectResponse($this->generateUrl('show_cart'));
+        return $this->redirectToRoute('show_cart');
+    }
+
+    /**
+     * @Route("/cart-update/{slug}", name="cart_update")
+     * @Method("POST")
+     */
+    public function update(string $slug, Request $request)
+    {
+        $basket = $this->get('app.basket');
+
+        $product = $this->getDoctrine()->getRepository(Product::class)->findOneBy(['slug' => $slug]);
+
+        if (! $product) {
+            return $this->redirectToRoute('all_products');
+        }
+
+        try {
+            $basket->update($product, $request->get('quantity'));
+
+            $this->addFlash("success", "Product: {$product->getTitle()}, successfully update in your cart!");
+        } catch (QuantityExceededException $e) {
+            $this->addFlash("error", "Product: {$product->getTitle()}, no enough quantity");
+
+            return $this->redirectToRoute('show_cart');
+        }
+
+        return $this->redirectToRoute('show_cart');
     }
 }
