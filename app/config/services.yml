@@ -2,6 +2,7 @@
 # http://symfony.com/doc/current/service_container.html
 parameters:
     bucket: 'cart'
+    tarnsaction_id: 'change this value when use app for validate card'
 
 services:
     app.check_stock:
@@ -13,3 +14,27 @@ services:
     app.basket:
         class: AppBundle\Service\Basket
         arguments: ['@app.session_storage', '@doctrine.orm.entity_manager', '@app.check_stock']
+    app.event:
+        class: AppBundle\Service\Events\Event
+        arguments: []
+    app.order_was_created:
+        class: AppBundle\Service\Events\OrderWasCreated
+        arguments: ['@doctrine', '@app.basket']
+    app.empty_basket:
+        class: AppBundle\Service\Handlers\EmptyBasket
+        arguments: []
+    app.mark_order_paid:
+        class: AppBundle\Service\Handlers\MarkOrderPaid
+        arguments: []
+    app.record_fail_paymend:
+        class: AppBundle\Service\Handlers\RecordFailPayment
+        arguments: []
+    app.record_pass_paymend:
+        class: AppBundle\Service\Handlers\RecordPassPayment
+        arguments: []
+    app.update_stock:
+        class: AppBundle\Service\Handlers\UpdateStock
+        arguments: []
+    app.update_virtual_cash:
+        class: AppBundle\Service\Handlers\UpdateVirtualCash
+        arguments: []

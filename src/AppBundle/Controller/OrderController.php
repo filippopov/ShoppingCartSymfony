@@ -8,6 +8,7 @@ use AppBundle\Entity\Customers;
 use AppBundle\Entity\Orders;
 use AppBundle\Entity\Orders_Products;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\User;
 use AppBundle\Form\AddressesType;
 use AppBundle\Form\CustomersType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -62,7 +63,9 @@ class OrderController extends Controller
         $customerForm->handleRequest($request);
 
         if ($addressesForm->isValid() && $customerForm->isValid()) {
-
+            /**
+             * @var User $user
+             */
             $user = $this->get('security.token_storage')->getToken()->getUser();
 
             if ($user  == Constants::ANONYMOUS) {
@@ -134,6 +137,43 @@ class OrderController extends Controller
             }
 
             $entityManager->flush();
+
+            $virtualCash = $user->getVirtualCash();
+
+            $isPayment = $basket->subTotalAll() <= $virtualCash;
+
+            $event = $this->get('app.order_was_created');
+            $event->setOrder($order);
+
+            if (! $isPayment) {
+                $failPayment = $this->get('app.record_fail_paymend');
+
+                $event->attach(
+                    $failPayment
+                );
+
+                $event->dispatch();
+
+                $this->addFlash('error', 'Payment fail. Not enough money');
+                return $this->redirectToRoute('show_cart');
+            }
+
+            $emptyBasket = $this->get('app.empty_basket');
+            $markOrderPaid = $this->get('app.mark_order_paid');
+            $passPayment = $this->get('app.record_pass_paymend');
+            $updateStock = $this->get('app.update_stock');
+            $updateVirtualCash = $this->get('app.update_virtual_cash');
+            $updateVirtualCash->setUser($user);
+
+            $event->attach([
+                $markOrderPaid,
+                $passPayment,
+                $updateStock,
+                $updateVirtualCash,
+                $emptyBasket
+            ]);
+
+            $event->dispatch();
 
             $this->addFlash('success', 'Successfully payment');
             return $this->redirectToRoute('all_products');
