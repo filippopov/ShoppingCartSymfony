@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -62,6 +63,19 @@ class Addresses
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
+
+
+    /**
+     * @var Orders[]|ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Orders", mappedBy="address")
+     */
+    private $order;
+
+
+    public function __construct()
+    {
+        $this->order = new ArrayCollection();
+    }
 
 
     /**

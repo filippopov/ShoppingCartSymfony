@@ -47,10 +47,22 @@ class Orders
     /**
      * @var int
      *
-     * Many Features have One Product.
      * @ManyToOne(targetEntity="AppBundle\Entity\Customers", inversedBy="order")
      */
     private $customer;
+
+    /**
+     * @var int
+     *
+     * @ManyToOne(targetEntity="AppBundle\Entity\Addresses", inversedBy="order")
+     */
+    private $address;
+
+
+    /**
+     * @ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="order")
+     */
+    private $user;
 
     /**
      * @var Orders_Products[]|ArrayCollection
@@ -85,6 +97,37 @@ class Orders
      */
     private $updatedAt;
 
+    /**
+     * @return int
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param int $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
 
     /**
      * Get id

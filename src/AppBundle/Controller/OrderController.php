@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Constants\Constants;
 use AppBundle\Entity\Addresses;
 use AppBundle\Entity\Customers;
 use AppBundle\Entity\Orders;
@@ -62,6 +63,13 @@ class OrderController extends Controller
 
         if ($addressesForm->isValid() && $customerForm->isValid()) {
 
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+
+            if ($user  == Constants::ANONYMOUS) {
+                $this->addFlash('error', 'For now you can not buy item, if you are not sign.');
+                return $this->redirectToRoute('all_products');
+            }
+
             // Regenerate unique hash identity
             $hash = bin2hex(random_bytes(32));
             $dateTimeNow = new \DateTime('now');
@@ -106,6 +114,8 @@ class OrderController extends Controller
             $order->setPaid(false);
             $order->setTotal($basket->subTotalAll());
             $order->setCustomerId($customer);
+            $order->setAddress($address);
+            $order->setUser($user);
             $order->setCreatedAt($dateTimeNow);
             $order->setUpdatedAt($dateTimeNow);
             $entityManager->persist($order);

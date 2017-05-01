@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Constants\Constants;
 use AppBundle\Entity\Role;
 use AppBundle\Entity\User;
 use AppBundle\Form\UserType;
@@ -59,7 +60,7 @@ class SecurityController extends Controller
         $token = $this->get('security.token_storage')->getToken();
         $user = $token->getUser();
 
-        if ($user  != 'anon.') {
+        if ($user  != Constants::ANONYMOUS) {
             return new RedirectResponse($this->generateUrl('all_products'));
         }
 
@@ -74,6 +75,7 @@ class SecurityController extends Controller
 
             $userRole = $this->getDoctrine()->getRepository(Role::class)->findOneBy(['name' => 'ROLE_USER']);
             $user->addRoles($userRole);
+            $user->setVirtualCash(Constants::DEFAULT_VIRTUAL_CASH);
 
             $user->setPassword(
                 $encoder->encodePassword($user, $user->getPasswordRaw())
