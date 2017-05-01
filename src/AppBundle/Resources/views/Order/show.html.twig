@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Order #{{ order.hash }}</h3>
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Shipping to:</h4>
+                        <table class="table">
+                            <tr>
+                                <td>Customer name</td><td>{{ order.customerId.name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Address 1</td><td> {{ order.address.address1 | capitalize }} </td>
+                            </tr>
+                            <tr>
+                                <td>Address 2</td><td>
+                                    {% if order.address.address2 is empty %}
+                                        -
+                                    {% endif %}
+                                    {{ order.address.address2 | capitalize }}
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>City</td><td> {{ order.address.city | capitalize }} </td>
+                            </tr>
+                            <tr>
+                                <td>Postal code</td><td> {{ order.address.getPostalCode }} </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Items</h4>
+                        {% for orderProduct in orderProducts %}
+                            <a href="{{ path('get_product',{'slug': orderProduct.productId.getSlug })}}"> {{ orderProduct.productId.getTitle }} </a>(x {{ orderProduct.getQuantity }})<br/>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Order cost</h3>
+                        <table class="table">
+                            <tr>
+                                <td>Shipping cost</td><td>$5.00</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Order total</strong></td><td>${{ order.total | number_format(2) }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

@@ -176,12 +176,39 @@ class OrderController extends Controller
             $event->dispatch();
 
             $this->addFlash('success', 'Successfully payment');
-            return $this->redirectToRoute('all_products');
+            return $this->redirectToRoute('show_order', ['hash' => $hash]);
         }
 
         return $this->render('@App/Order/order.html.twig', [
             'addressesForm' => $addressesForm->createView(),
             'customerForm' => $customerForm->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/show-order/{hash}", name="show_order")
+     * @Method("GET")
+     * @Template()
+     */
+    public function showAction(string $hash)
+    {
+        $order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['hash' => $hash]);
+
+        if (! $order) {
+            $this->addFlash('error', 'Not found order');
+            $this->redirectToRoute('all_products');
+        }
+
+        $orderProducts = $this->getDoctrine()->getRepository(Orders_Products::class)->findBy(['order' => $order]);
+
+        if (! $orderProducts) {
+            $this->addFlash('error', 'Not found products for this order');
+            $this->redirectToRoute('all_products');
+        }
+
+        return [
+            'order' => $order,
+            'orderProducts' => $orderProducts
+        ];
     }
 }
