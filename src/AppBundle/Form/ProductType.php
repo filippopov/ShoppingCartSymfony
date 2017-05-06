@@ -28,16 +28,17 @@ class ProductType extends AbstractType
          */
         $allCategories = $em->getRepository(Categories::class)->findBy([],['name' => 'asc']);
         $allCategoriesArr = [];
-        $allCategoriesArr['-Please Select-'] = 0;
+        $allCategoriesArr[' -Please select- '] = '';
 
         foreach ($allCategories as $category) {
             $allCategoriesArr[$category->getName()] = $category->getId();
         }
 
         $isSecondHandArr = [];
-        $isSecondHandArr['-Please Select-'] = 0;
+        $isSecondHandArr[' -Please select- '] = '';
+        $isSecondHandArr['No'] = 0;
         $isSecondHandArr['Yes'] = 1;
-        $isSecondHandArr['No'] = -1;
+
 
         $builder
             ->add('title', TextType::class, ['required' => false])
@@ -45,16 +46,19 @@ class ProductType extends AbstractType
             ->add('price', MoneyType::class, ['required' => false])
             ->add('image', FileType::class, [
                 'data_class' => null,
-                'required' => false
+                'required' => false,
             ])
             ->add('stock', IntegerType::class, ['required' => false])
             ->add('isSecondHand', ChoiceType::class, [
                 'choices' => $isSecondHandArr,
-                'required' => false
+                'required' => false,
+                'preferred_choices' => [' -Please select- ']
             ])
             ->add('category', ChoiceType::class, [
                 'choices' => $allCategoriesArr,
-                'required' => false
+                'required' => false,
+                'preferred_choices' => [' -Please select- ']
+
             ]);
     }
     

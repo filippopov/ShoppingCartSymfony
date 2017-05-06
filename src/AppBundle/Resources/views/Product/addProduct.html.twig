@@ -3,10 +3,51 @@
 {% block body %}
     {{ parent() }}
     <div class="container">
-        {{ form_start(productForm) }}
-        {{ form_widget(productForm) }}
-        <input type="submit" value="Add!"/>
-        {{ form_end(productForm) }}
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Create Product</h3>
+                <hr>
+                {{ form_start(productForm) }}
+                <div class="form-group {% if not productForm.title.vars.valid %}has-error{% endif %}">
+                    {{ form_label(productForm.title) }}
+                    {{ form_widget(productForm.title, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(productForm.title) }}
+                </div>
+                <div class="form-group {% if not productForm.stock.vars.valid %}has-error{% endif %}">
+                    {{ form_label(productForm.stock) }}
+                    {{ form_widget(productForm.stock, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(productForm.stock) }}
+                </div>
+                <div class="form-group {% if not productForm.price.vars.valid %}has-error{% endif %}">
+                    {{ form_label(productForm.price) }}
+                    {{ form_widget(productForm.price, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(productForm.price) }}
+                </div>
+                <div class="form-group {% if not productForm.category.vars.valid %}has-error{% endif %}">
+                    {{ form_label(productForm.category) }}
+                    {{ form_widget(productForm.category, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(productForm.category) }}
+                </div>
+                <div class="form-group {% if not productForm.isSecondHand.vars.valid %}has-error{% endif %}">
+                    {{ form_label(productForm.isSecondHand) }}
+                    {{ form_widget(productForm.isSecondHand, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(productForm.isSecondHand) }}
+                </div>
+                <div class="form-group {% if not productForm.image.vars.valid %}has-error{% endif %}">
+                    {{ form_label(productForm.image) }}
+                    {{ form_widget(productForm.image, { 'attr': {'class': 'form-control-file'} }) }}
+                    {{ form_errors(productForm.image) }}
+                </div>
+                <div class="form-group {% if not productForm.description.vars.valid %}has-error{% endif %}">
+                    {{ form_label(productForm.description) }}
+                    {{ form_widget(productForm.description, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(productForm.description) }}
+                </div>
+
+                <button class="btn btn-default" type="submit">Add Product</button>
+
+                {{ form_end(productForm) }}
+            </div>
+        </div>
     </div>
 {% endblock %}
-

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-sm">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id Number</th>
+                            <th>Title</th>
+                            <th>Is Deleted</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in products %}
+                                <tr>
+                                    <td>{{ product.id }}</td>
+                                    <td>
+                                        <a href="{{ path("get_product", {'slug' : product.slug})}}" title="{{ product.title }}">{{ product.title }}</a>
+                                    </td>
+                                    <td>
+                                        {% if product.deletedAt is null %}
+                                            No
+                                        {% else %}
+                                            {{ product.deletedAt|date("d/m/Y") }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-default" href="{{ path("edit_product", {'id':product.id}) }}">Edit</a>
+                                    </td>
+                                    <td>
+                                        {% if product.deletedAt is null %}
+                                            <form method="post" action="{{ path("delete_product", {'id':product.id, 'page':thisPage}) }}">
+                                                <button class="btn btn-default" type="submit">Delete</button>
+                                            </form>
+                                        {% else %}
+                                            <form method="post" action="{{ path("reverse_delete_product", {'id':product.id, 'page':thisPage}) }}">
+                                                <button class="btn btn-default" type="submit">Reverse Delete</button>
+                                            </form>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% if maxPages > 1 %}
+                        <ul class="pagination pagination-sm">
+                            {# `«` arrow  #}
+                            <li {{ thisPage == 1 ? 'class="disabled"' }}>
+                                <a href="{{ path('all_products_edit_menu', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                            </li>
+
+                            {# Render each page number #}
+                            {% for i in 1..maxPages %}
+                                <li {{ thisPage == i ? 'class="active"' }}>
+                                    <a href="{{ path('all_products_edit_menu', {page: i}) }}">{{ i }}</a>
+                                </li>
+                            {% endfor %}
+
+                            {# `»` arrow #}
+                            <li {{ thisPage == maxPages ? 'class="disabled"' }}>
+                                <a href="{{ path('all_products_edit_menu', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

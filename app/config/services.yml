@@ -41,3 +41,6 @@ services:
     app.get_data_from_db:
         class: AppBundle\Service\GetDataFromDB
         arguments: ['@doctrine.orm.entity_manager']
+    app.pagination:
+        class: AppBundle\Service\Pagination
+        arguments: ['@doctrine.orm.entity_manager']

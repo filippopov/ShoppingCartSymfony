@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * product
@@ -26,7 +27,8 @@ class Product
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min="3")
      * @ORM\Column(name="title", type="string", length=255, unique=true)
      */
     private $title;
@@ -47,21 +49,21 @@ class Product
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
      */
     private $price;
 
     /**
      * @var string
-     *
+     * @Assert\Image(mimeTypes={"image/png", "image/jpeg", "image/jpg"}, maxSize="5M")
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
 
     /**
      * @var int
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="stock", type="integer")
      */
     private $stock;
@@ -89,8 +91,7 @@ class Product
     private $deletedAt;
 
     /**
-     * @var int
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="is_second_hand", type="smallint")
      */
     private $isSecondHand;
@@ -118,7 +119,7 @@ class Product
 
     /**
      * @var int
-     *
+     * @Assert\NotBlank()
      * @ManyToOne(targetEntity="AppBundle\Entity\Categories", inversedBy="product")
      */
     private $category;
@@ -151,7 +152,7 @@ class Product
     /**
      * @return int
      */
-    public function getCategoryId()
+    public function getCategory()
     {
         return $this->category;
     }
@@ -159,7 +160,7 @@ class Product
     /**
      * @param int $categoryId
      */
-    public function setCategoryId($categoryId)
+    public function setCategory($categoryId)
     {
         $this->category = $categoryId;
     }
@@ -369,7 +370,7 @@ class Product
     /**
      * @return \DateTime
      */
-    public function getDeletedAt(): \DateTime
+    public function getDeletedAt()
     {
         return $this->deletedAt;
     }
@@ -377,7 +378,7 @@ class Product
     /**
      * @param \DateTime $deletedAt
      */
-    public function setDeletedAt(\DateTime $deletedAt)
+    public function setDeletedAt($deletedAt)
     {
         $this->deletedAt = $deletedAt;
     }
@@ -385,7 +386,7 @@ class Product
     /**
      * @return int
      */
-    public function getIsSecondHand(): int
+    public function getIsSecondHand()
     {
         return $this->isSecondHand;
     }
@@ -393,7 +394,7 @@ class Product
     /**
      * @param int $isSecondHand
      */
-    public function setIsSecondHand(int $isSecondHand)
+    public function setIsSecondHand($isSecondHand)
     {
         $this->isSecondHand = $isSecondHand;
     }
@@ -401,7 +402,7 @@ class Product
     /**
      * @return int
      */
-    public function getUser(): int
+    public function getUser()
     {
         return $this->user;
     }
@@ -409,7 +410,7 @@ class Product
     /**
      * @param int $user
      */
-    public function setUser(int $user)
+    public function setUser($user)
     {
         $this->user = $user;
     }

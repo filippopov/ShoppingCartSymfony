@@ -33,4 +33,4 @@ security:
         - { path: ^/login , roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/ , roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/project/manage, roles: [ ROLE_ADMIN, ROLE_SADMIN] }
-        - { path: ^/, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SADMIN] }
+        - { path: ^/, roles: [ROLE_USER, ROLE_ADMIN, ROLE_SADMIN, ROLE_EDITOR] }
