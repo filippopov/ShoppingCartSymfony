@@ -2,11 +2,14 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Categories;
 use AppBundle\Entity\Product;
+use AppBundle\Form\ProductType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Bundle\FrameworkBundle\Tests\Fixtures\Validation\Category;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ProductController extends Controller
@@ -44,6 +47,24 @@ class ProductController extends Controller
         return [
             'product' => $product,
             'stock' => $stock
+        ];
+    }
+
+
+    /**
+     * @Route("/products/add", name="add_product")
+     * @Method("GET")
+     * @Template()
+     */
+    public function addProductAction()
+    {
+
+        $form = $this->createForm(ProductType::class, null, [
+            'entity_manager' => $this->get('doctrine.orm.entity_manager')
+        ]);
+
+        return [
+            'productForm' => $form->createView()
         ];
     }
 }

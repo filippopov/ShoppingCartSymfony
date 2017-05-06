@@ -35,6 +35,4 @@ class CustomersType extends AbstractType
     {
         return 'appbundle_customers';
     }
-
-
 }

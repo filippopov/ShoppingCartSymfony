@@ -81,11 +81,19 @@ class User implements UserInterface
      */
     private $virtualCash;
 
+
+    /**
+     * @var Product[]|ArrayCollection
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Product", mappedBy="user")
+     */
+    private $product;
+
     public function __construct()
     {
         $this->roles = new ArrayCollection();
         $this->promotion = new ArrayCollection();
         $this->order = new ArrayCollection();
+        $this->product = new ArrayCollection();
     }
 
     /**

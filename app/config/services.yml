@@ -38,3 +38,6 @@ services:
     app.update_virtual_cash:
         class: AppBundle\Service\Handlers\UpdateVirtualCash
         arguments: []
+    app.get_data_from_db:
+        class: AppBundle\Service\GetDataFromDB
+        arguments: ['@doctrine.orm.entity_manager']

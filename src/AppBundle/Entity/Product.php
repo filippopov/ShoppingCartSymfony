@@ -80,6 +80,21 @@ class Product
      */
     private $updatedAt;
 
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="deleted_at", type="datetime", nullable=true)
+     */
+    private $deletedAt;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="is_second_hand", type="smallint")
+     */
+    private $isSecondHand;
+
     /**
      * @var int
      */
@@ -107,6 +122,13 @@ class Product
      * @ManyToOne(targetEntity="AppBundle\Entity\Categories", inversedBy="product")
      */
     private $category;
+
+    /**
+     * @var int
+     *
+     * @ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="product")
+     */
+    private $user;
 
     /**
      * @var Orders_Products[]|ArrayCollection
@@ -342,6 +364,54 @@ class Product
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDeletedAt(): \DateTime
+    {
+        return $this->deletedAt;
+    }
+
+    /**
+     * @param \DateTime $deletedAt
+     */
+    public function setDeletedAt(\DateTime $deletedAt)
+    {
+        $this->deletedAt = $deletedAt;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIsSecondHand(): int
+    {
+        return $this->isSecondHand;
+    }
+
+    /**
+     * @param int $isSecondHand
+     */
+    public function setIsSecondHand(int $isSecondHand)
+    {
+        $this->isSecondHand = $isSecondHand;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUser(): int
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param int $user
+     */
+    public function setUser(int $user)
+    {
+        $this->user = $user;
     }
 }
 
