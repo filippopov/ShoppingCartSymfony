@@ -207,11 +207,6 @@ class ProductController extends Controller
             $products = $pagination->getAllProductsUser($page, $userId);
         }
 
-
-
-
-
-
         $maxPages = ceil($products->count() / $pagination->getLimit());
         $thisPage = $page;
 

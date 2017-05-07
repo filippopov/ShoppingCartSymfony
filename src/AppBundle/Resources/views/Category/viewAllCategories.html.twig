@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-sm">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id Number</th>
+                            <th>Category Name</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for category in categories %}
+                            <tr>
+                                <td>{{ category.id }}</td>
+                                <td>
+                                    {{ category.name }}
+                                </td>
+                                <td>
+                                    <a class="btn btn-default" href="{{ path("edit_category", {'id':category.id, 'page':thisPage}) }}">Edit</a>
+                                </td>
+                                <td>
+                                    <form method="post" action="{{ path("delete_category", {'id':category.id, 'page':thisPage}) }}">
+                                        <button class="btn btn-default" type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% if maxPages > 1 %}
+                        <ul class="pagination pagination-sm">
+                            {# `«` arrow  #}
+                            <li {{ thisPage == 1 ? 'class="disabled"' }}>
+                                <a href="{{ path('all_categories', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                            </li>
+
+                            {# Render each page number #}
+                            {% for i in 1..maxPages %}
+                                <li {{ thisPage == i ? 'class="active"' }}>
+                                    <a href="{{ path('all_categories', {page: i}) }}">{{ i }}</a>
+                                </li>
+                            {% endfor %}
+
+                            {# `»` arrow #}
+                            <li {{ thisPage == maxPages ? 'class="disabled"' }}>
+                                <a href="{{ path('all_categories', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+
+                </div>
+                <a href="{{ path('add_category') }}" class="btn btn-default">Add Category</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

@@ -9,6 +9,7 @@
 namespace AppBundle\Service;
 
 
+use AppBundle\Entity\Categories;
 use AppBundle\Entity\Product;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -75,6 +76,20 @@ class Pagination
         $query = $repository->createQueryBuilder('p')
             ->where('p.deletedAt is null')
             ->orderBy('p.id', 'asc')
+            ->getQuery();
+
+        // No need to manually get get the result ($query->getResult())
+        $paginator = $this->paginate($query, $currentPage);
+
+        return $paginator;
+    }
+
+    public function getAllCategories($currentPage = 1)
+    {
+        $repository = $this->manager->getRepository(Categories::class);
+        // Create our query
+        $query = $repository->createQueryBuilder('c')
+            ->orderBy('c.id', 'asc')
             ->getQuery();
 
         // No need to manually get get the result ($query->getResult())

@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\OneToMany;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Categories
@@ -25,7 +26,8 @@ class Categories
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank()
+     * @Assert\Length(min="5")
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
