@@ -4,6 +4,9 @@
     {{ parent() }}
     <div class="container" id="container" >
         <div class="row">
+            {% if products is empty %}
+                <p>No products for this category</p>
+            {% endif %}
             {% for index, product in products %}
                 <div class="col-md-4 col-sm-6">
 
