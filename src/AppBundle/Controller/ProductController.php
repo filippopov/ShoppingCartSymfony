@@ -42,6 +42,33 @@ class ProductController extends Controller
         ];
     }
 
+
+    /**
+     * @Route("/products/by/category/{category}/{page}", name="products_by_category")
+     * @Method("GET")
+     * @Template()
+     */
+    public function viewProductsByCategoryAction($category = 0, $page = 1)
+    {
+        if (! $category) {
+            return $this->redirectToRoute('all_products');
+        }
+
+        $pagination = $this->get('app.pagination');
+        $pagination->setLimit(6);
+        $products = $pagination->getAllNotDeletedProductsByCategory($category, $page);
+
+        $maxPages = ceil($products->count() / $pagination->getLimit());
+        $thisPage = $page;
+
+        return [
+            'products' => $products,
+            'category' => $category,
+            'maxPages' => $maxPages,
+            'thisPage' => $thisPage
+        ];
+    }
+
     /**
      * @Route("/product/{slug}", name="get_product")
      * @Method("GET")

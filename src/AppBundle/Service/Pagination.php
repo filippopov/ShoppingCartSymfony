@@ -84,6 +84,22 @@ class Pagination
         return $paginator;
     }
 
+    public function getAllNotDeletedProductsByCategory($category = 0, $currentPage = 1)
+    {
+        $repository = $this->manager->getRepository(Product::class);
+        // Create our query
+        $query = $repository->createQueryBuilder('p')
+            ->where('p.deletedAt is null AND p.category = :category')
+            ->setParameter(':category', $category)
+            ->orderBy('p.id', 'asc')
+            ->getQuery();
+
+        // No need to manually get get the result ($query->getResult())
+        $paginator = $this->paginate($query, $currentPage);
+
+        return $paginator;
+    }
+
     public function getAllCategories($currentPage = 1)
     {
         $repository = $this->manager->getRepository(Categories::class);

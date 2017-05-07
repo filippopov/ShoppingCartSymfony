@@ -40,6 +40,7 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         basket: '@app.basket'
+        get_data_from_db: '@app.get_data_from_db'
     form_themes:
         - 'AppBundle:FormTheme:error.html.twig'
 

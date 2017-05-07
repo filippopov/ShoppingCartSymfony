@@ -17,7 +17,7 @@ class CategoryController extends Controller
 {
     /**
      * @Route("/categories/all/{page}", name="all_categories")
-     * @Security("has_role('ROLE_EDITOR') and has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_EDITOR') or has_role('ROLE_ADMIN')")
      * @Method("GET")
      * @Template()
      */
@@ -40,7 +40,7 @@ class CategoryController extends Controller
 
     /**
      * @Route("/categories/delete/{id}/{page}", name="delete_category")
-     * @Security("has_role('ROLE_EDITOR') and has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_EDITOR') or has_role('ROLE_ADMIN')")
      * @Method("POST")
      */
     public function deleteCategoryAction(Categories $category, $page)
@@ -60,7 +60,7 @@ class CategoryController extends Controller
 
     /**
      * @Route("/categories/edit/{id}/{page}", name="edit_category")
-     * @Security("has_role('ROLE_EDITOR') and has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_EDITOR') or has_role('ROLE_ADMIN')")
      * @Method("GET")
      * @Template()
      */
@@ -75,7 +75,7 @@ class CategoryController extends Controller
 
     /**
      * @Route("/categories/edit/{id}/{page}", name="edit_category_process")
-     * @Security("has_role('ROLE_EDITOR') and has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_EDITOR') or has_role('ROLE_ADMIN')")
      * @Method("POST")
      */
     public function editCategoryProcessAction(Categories $category, $page, Request $request)
@@ -100,7 +100,7 @@ class CategoryController extends Controller
 
     /**
      * @Route("/categories/add", name="add_category")
-     * @Security("has_role('ROLE_EDITOR') and has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_EDITOR') or has_role('ROLE_ADMIN')")
      * @Method("GET")
      * @Template()
      */
@@ -115,7 +115,7 @@ class CategoryController extends Controller
 
     /**
      * @Route("/categories/add", name="add_category_process")
-     * @Security("has_role('ROLE_EDITOR') and has_role('ROLE_ADMIN')")
+     * @Security("has_role('ROLE_EDITOR') or has_role('ROLE_ADMIN')")
      * @Method("POST")
      */
     public function addCategoryProcessAction(Request $request)

@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
 
 {% block body %}
     {{ parent() }}
@@ -24,19 +24,19 @@
                 <ul class="pagination pagination-sm">
                     {# `«` arrow  #}
                     <li {{ thisPage == 1 ? 'class="disabled"' }}>
-                        <a href="{{ path('all_products', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                        <a href="{{ path('products_by_category', {category: category, page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
                     </li>
 
                     {# Render each page number #}
                     {% for i in 1..maxPages %}
                         <li {{ thisPage == i ? 'class="active"' }}>
-                            <a href="{{ path('all_products', {page: i}) }}">{{ i }}</a>
+                            <a href="{{ path('products_by_category', {category: category, page: i}) }}">{{ i }}</a>
                         </li>
                     {% endfor %}
 
                     {# `»` arrow #}
                     <li {{ thisPage == maxPages ? 'class="disabled"' }}>
-                        <a href="{{ path('all_products', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                        <a href="{{ path('products_by_category', {category: category, page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
                     </li>
                 </ul>
             {% endif %}
