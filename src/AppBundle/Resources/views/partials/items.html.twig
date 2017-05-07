@@ -2,6 +2,12 @@
     <a href="{{ path("get_product", {'slug' : product.slug})}}"><img src="{{ asset('images/' ~ product.image) }}" alt="{{ product.title }} image"></a>
     <div class="caption">
         <h4><a href="{{ path("get_product", {'slug' : product.slug})}}"> {{ product.title }} </a></h4>
-        <p>{{ product.description }}</p>
+        <p>Price: <strong>$ {{ product.price }}</strong></p>
+        <p>Description: {{ product.description }}</p>
+        {% if product.user is null %}
+            <p>Owner: Shop</p>
+        {% else %}
+            <p>Owner: {{ product.user.username }}</p>
+        {% endif %}
     </div>
 </div>
