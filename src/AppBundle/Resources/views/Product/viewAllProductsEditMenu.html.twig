@@ -12,6 +12,7 @@
                             <th>Id Number</th>
                             <th>Title</th>
                             <th>Is Deleted</th>
+                            <th>Creator</th>
                             <th>Edit</th>
                             <th>Delete</th>
                         </tr>
@@ -31,8 +32,17 @@
                                         {% endif %}
                                     </td>
                                     <td>
-                                        <a class="btn btn-default" href="{{ path("edit_product", {'id':product.id}) }}">Edit</a>
+                                        {% if product.user is null %}
+                                            Shop
+                                        {% else %}
+                                            {{ product.user.username }}
+                                        {% endif %}
                                     </td>
+                                    <td>
+                                        <a class="btn btn-default" href="{{ path("edit_product", {'id':product.id, 'page':thisPage}) }}">Edit</a>
+                                    </td>
+
+
                                     <td>
                                         {% if product.deletedAt is null %}
                                             <form method="post" action="{{ path("delete_product", {'id':product.id, 'page':thisPage}) }}">
@@ -69,6 +79,8 @@
                         </ul>
                     {% endif %}
                 </div>
+
+                <a href="{{ path('add_product') }}" class="btn btn-default">Add Product</a>
             </div>
         </div>
     </div>

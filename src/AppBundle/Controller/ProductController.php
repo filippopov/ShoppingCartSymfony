@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Categories;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\User;
 use AppBundle\Form\ProductType;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -21,7 +22,7 @@ use Symfony\Component\HttpFoundation\Response;
 class ProductController extends Controller
 {
     /**
-     * @Route("/{page}", name="all_products")
+     * @Route("/home/{page}", name="all_products")
      * @Method("GET")
      * @Template()
      */
@@ -62,7 +63,6 @@ class ProductController extends Controller
             'stock' => $stock
         ];
     }
-
 
     /**
      * @Route("/products/add", name="add_product")
@@ -192,7 +192,24 @@ class ProductController extends Controller
     {
         $pagination = $this->get('app.pagination');
         $pagination->setLimit(5);
-        $products = $pagination->getAllProducts($page);
+
+        $securityContext = $this->get('security.authorization_checker');
+
+        if ($securityContext->isGranted('ROLE_ADMIN')) {
+            $products = $pagination->getAllProducts($page);
+        } elseif ($securityContext->isGranted('ROLE_EDITOR')) {
+            $products = $pagination->getAllProductsEditor($page);
+        } else {
+            /** @var User $user */
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+            $userId = $user->getId();
+
+            $products = $pagination->getAllProductsUser($page, $userId);
+        }
+
+
+
+
 
 
         $maxPages = ceil($products->count() / $pagination->getLimit());
@@ -206,14 +223,114 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/products/edit", name="edit_product")
+     * @Route("/products/edit/{id}/{page}", name="edit_product")
      * @Security("has_role('ROLE_USER')")
      * @Method("GET")
      * @Template()
      */
-    public function editProductAction()
+    public function editProductAction(Product $product, $page)
     {
+        $form = $this->createForm(ProductType::class, $product, [
+            'entity_manager' => $this->get('doctrine.orm.entity_manager')
+        ]);
 
+        return [
+            'productForm' => $form->createView()
+        ];
+    }
+
+    /**
+     * @Route("/products/edit/{id}/{page}", name="edit_product_process")
+     * @Security("has_role('ROLE_USER')")
+     * @Method("POST")
+     */
+    public function editProductProcessAction(Product $product, $page, Request $request)
+    {
+        $form = $this->createForm(ProductType::class, $product, [
+            'entity_manager' => $this->get('doctrine.orm.entity_manager')
+        ]);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $dateTimeNow = new \DateTime('now');
+            $product->setUpdatedAt($dateTimeNow);
+
+            $title = $product->getTitle();
+
+            $findTitle = $this->getDoctrine()->getRepository(Product::class)->findOneBy(['title' => $title]);
+
+            if ($findTitle) {
+                $this->addFlash('error', 'Product with this title already exist. Please change title');
+                return $this->redirectToRoute('edit_product');
+            }
+
+            $slug = strtolower($title);
+            $slug = str_replace(' ', '-', $slug);
+
+            $findSlug = $this->getDoctrine()->getRepository(Product::class)->findOneBy(['slug' => $slug]);
+
+            if ($findSlug) {
+                $this->addFlash('error', 'Product with this slug already exist. Please change title');
+                return $this->redirectToRoute('edit_product');
+            }
+
+            $product->setSlug($slug);
+
+            $categoryId = $product->getCategory();
+
+            $category = $this->getDoctrine()->getRepository(Categories::class)->find($categoryId);
+
+            if (! $category) {
+                $this->addFlash('error', 'Invalid Category');
+                return $this->redirectToRoute('edit_product');
+            }
+
+            $product->setCategory($category);
+
+            /** @var UploadedFile $file */
+            $file = $product->getImage();
+
+            if ($file) {
+                $type = $file->getMimeType();
+
+                $fileName = md5($product->getTitle() . '' . $dateTimeNow->format('Y-m-d H:i:s'));
+
+                $extensionArray = [
+                    "image/png" => 'png',
+                    "image/jpeg" => 'jpg',
+                    "image/jpg" => 'jpg'
+                ];
+
+                $extension = isset($extensionArray[$type]) ? $extensionArray[$type] : '';
+
+                if ($extension) {
+                    $fileName = $fileName . '.' . $extension;
+                }
+
+                $file->move(
+                    $this->get('kernel')->getRootDir() . '/../web/images/',
+                    $fileName
+                );
+
+                $product->setImage($fileName);
+            } else {
+                $product->setImage('Product11.png');
+            }
+
+            $entityManager->persist($product);
+            $entityManager->flush();
+
+            $this->addFlash('success', "Product with name {$product->getTitle()} was edited successfully");
+
+            return $this->redirectToRoute('all_products_edit_menu', ['page' => $page]);
+        }
+
+        return $this->render('@App/Product/editProduct.html.twig', [
+            'productForm' => $form->createView()
+        ]);
     }
 
     /**

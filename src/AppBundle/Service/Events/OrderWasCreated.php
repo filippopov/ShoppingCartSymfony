@@ -27,10 +27,16 @@ class OrderWasCreated extends Event
      */
     public $manager;
 
-    public function  __construct(ManagerRegistry $manager, Basket $basket)
+    /**
+     * @var EntityManager
+     */
+    public $em;
+
+    public function  __construct(ManagerRegistry $manager, Basket $basket, EntityManager $em)
     {
         $this->manager = $manager;
         $this->basket = $basket;
+        $this->em = $em;
     }
 
     public function setOrder(Orders $order)

@@ -19,7 +19,7 @@ services:
         arguments: []
     app.order_was_created:
         class: AppBundle\Service\Events\OrderWasCreated
-        arguments: ['@doctrine', '@app.basket']
+        arguments: ['@doctrine', '@app.basket', '@doctrine.orm.entity_manager']
     app.empty_basket:
         class: AppBundle\Service\Handlers\EmptyBasket
         arguments: []
@@ -37,6 +37,9 @@ services:
         arguments: []
     app.update_virtual_cash:
         class: AppBundle\Service\Handlers\UpdateVirtualCash
+        arguments: []
+    app.update_virtual_cash_owners:
+        class: AppBundle\Service\Handlers\UpdateVirtualCashOwners
         arguments: []
     app.get_data_from_db:
         class: AppBundle\Service\GetDataFromDB

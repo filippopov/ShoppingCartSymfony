@@ -128,10 +128,23 @@ class OrderController extends Controller
              */
             $allItems = $basket->all();
 
+            $itemsOnUsers = [];
+
             foreach ($allItems as $item) {
                 $ordersProduct = new Orders_Products();
                 $ordersProduct->setOrderId($order);
                 $ordersProduct->setProductId($item);
+                if ($item->getUser()) {
+                    $owner = $item->getUser();
+                    $ownerId = $owner->getId();
+                    $itemPrice = $item->getPrice();
+                    $itemQuantity = $item->getQuantity();
+                    $itemsOnUsers[$ownerId] = [
+                        'price' => $itemPrice,
+                        'quantity' => $itemQuantity
+                    ];
+                }
+
                 $ordersProduct->setQuantity($item->getQuantity());
                 $entityManager->persist($ordersProduct);
             }
@@ -165,11 +178,15 @@ class OrderController extends Controller
             $updateVirtualCash = $this->get('app.update_virtual_cash');
             $updateVirtualCash->setUser($user);
 
+            $updateVirtualCashOwners = $this->get('app.update_virtual_cash_owners');
+            $updateVirtualCashOwners->setOwnerMoney($itemsOnUsers);
+
             $event->attach([
                 $markOrderPaid,
                 $passPayment,
                 $updateStock,
                 $updateVirtualCash,
+                $updateVirtualCashOwners,
                 $emptyBasket
             ]);
 

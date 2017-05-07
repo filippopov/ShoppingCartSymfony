@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Categories;
+use AppBundle\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -20,6 +21,21 @@ class ProductType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        /** @var Product $product */
+        $product = isset($options['data']) ? $options['data'] : null;
+
+        $categoryName = '';
+
+        if ($product) {
+            /** @var Categories $category */
+            $category = $product->getCategory();
+            if ($category) {
+                $categoryName = $category->getName();
+                $product->setCategory(null);
+                $product->setUser(null);
+            }
+        }
+
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $options['entity_manager'];
 
@@ -33,6 +49,8 @@ class ProductType extends AbstractType
         foreach ($allCategories as $category) {
             $allCategoriesArr[$category->getName()] = $category->getId();
         }
+
+        $choices = isset($allCategoriesArr[$categoryName]) ? $allCategoriesArr[$categoryName] : null;
 
         $isSecondHandArr = [];
         $isSecondHandArr[' -Please select- '] = '';
@@ -57,8 +75,8 @@ class ProductType extends AbstractType
             ->add('category', ChoiceType::class, [
                 'choices' => $allCategoriesArr,
                 'required' => false,
-                'preferred_choices' => [' -Please select- ']
-
+                'preferred_choices' => [' -Please select- '],
+                'data' => $choices
             ]);
     }
     
