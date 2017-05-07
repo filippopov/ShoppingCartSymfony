@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Create Category</h3>
+                <hr>
+                {{ form_start(categoryForm) }}
+                <div class="form-group {% if not categoryForm.name.vars.valid %}has-error{% endif %}">
+                    {{ form_label(categoryForm.name) }}
+                    {{ form_widget(categoryForm.name, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(categoryForm.name) }}
+                </div>
+
+                <button class="btn btn-default" type="submit">Add Category</button>
+                {{ form_end(categoryForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
