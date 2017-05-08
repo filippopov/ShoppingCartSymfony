@@ -27,10 +27,10 @@
                                     {{ promotion.promotionName }}
                                 </td>
                                 <td>
-                                    {% if promotion.getProductId is null %}
+                                    {% if promotion.getProduct is null %}
                                         No
                                     {% else %}
-                                        {{ promotion.getProductId.title }}
+                                        {{ promotion.getProduct.title }}
                                     {% endif %}
                                 </td>
                                 <td>
@@ -41,10 +41,10 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    {% if promotion.getCategoryId is null %}
+                                    {% if promotion.getCategory is null %}
                                         No
                                     {% else %}
-                                        {{ promotion.getCategoryId.name }}
+                                        {{ promotion.getCategory.name }}
                                     {% endif %}
                                 </td>
                                 <td>

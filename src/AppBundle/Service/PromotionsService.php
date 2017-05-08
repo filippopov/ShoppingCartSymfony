@@ -37,7 +37,7 @@ class PromotionsService implements PromotionInterface
     public function remove(Promotions $promotion)
     {
         $entityManager = $this->managerRegistry->getManager();
-        $productId = $promotion->getProductId();
+        $productId = $promotion->getProduct();
         if ($productId) {
             $this->setProductPromotionPriceToZero($productId);
         }
@@ -48,7 +48,7 @@ class PromotionsService implements PromotionInterface
             $this->setAllProductsPromotionPriceToZero();
         }
 
-        $categoryId = $promotion->getCategoryId();
+        $categoryId = $promotion->getCategory();
 
         if ($categoryId) {
             $this->setAllProductsFromOneCategoryPromotionPriceToZero($categoryId);
@@ -85,7 +85,7 @@ class PromotionsService implements PromotionInterface
             $promotionStartTime = new \DateTime($promotionStartTime->format('Y-m-d H:i:s'));
             if ($promotionStartTime <= $dateTimeNow) {
 
-                $productId = $promotion->getProductId();
+                $productId = $promotion->getProduct();
                 $percentages = $promotion->getPercentages();
 
                 if ($productId) {
@@ -98,7 +98,7 @@ class PromotionsService implements PromotionInterface
                     $this->promotionForAllProducts($percentages);
                 }
 
-                $categoryId = $promotion->getCategoryId();
+                $categoryId = $promotion->getCategory();
 
                 if ($categoryId) {
                     $this->promotionByCategory($categoryId, $percentages);

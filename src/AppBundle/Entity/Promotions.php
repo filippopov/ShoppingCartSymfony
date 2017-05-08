@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Promotions
@@ -28,14 +29,14 @@ class Promotions
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="date_from", type="datetime")
      */
     private $dateFrom;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\NotBlank()
      * @ORM\Column(name="date_to", type="datetime")
      */
     private $dateTo;
@@ -51,6 +52,7 @@ class Promotions
     private $user;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(name="promotion_name", type="string", length=255, unique=true)
      */
     private $promotionName;
@@ -61,6 +63,7 @@ class Promotions
     private $fullPromotion;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(name="percentages", type="integer")
      */
     private $percentages;
@@ -82,7 +85,7 @@ class Promotions
      *
      * @return Promotions
      */
-    public function setProductId($productId)
+    public function setProduct($productId)
     {
         $this->product = $productId;
 
@@ -94,7 +97,7 @@ class Promotions
      *
      * @return int
      */
-    public function getProductId()
+    public function getProduct()
     {
         return $this->product;
     }
@@ -154,7 +157,7 @@ class Promotions
      *
      * @return Promotions
      */
-    public function setCategoryId($categoryId)
+    public function setCategory($categoryId)
     {
         $this->category = $categoryId;
 
@@ -166,7 +169,7 @@ class Promotions
      *
      * @return int
      */
-    public function getCategoryId()
+    public function getCategory()
     {
         return $this->category;
     }
