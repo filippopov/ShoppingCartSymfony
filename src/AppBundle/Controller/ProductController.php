@@ -28,6 +28,10 @@ class ProductController extends Controller
      */
     public function viewAllProductsAction($page = 1)
     {
+        $promotion = $this->get('app.promotion_service');
+        $promotion->refreshPromotions();
+        $promotion->setPromotions();
+
         $pagination = $this->get('app.pagination');
         $pagination->setLimit(6);
         $products = $pagination->getAllNotDeletedProducts($page);

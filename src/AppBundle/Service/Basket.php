@@ -132,7 +132,18 @@ class Basket
                continue;
             }
 
-            $total = $total + ($item->getPrice() * $item->getQuantity());
+            if ((float) $item->getPromotionPrice()) {
+                if ($item->getPromotionPrice() < $item->getPrice()) {
+                    $price = $item->getPromotionPrice();
+                } else {
+                    $price = $item->getPrice();
+                }
+
+            } else {
+                $price = $item->getPrice();
+            }
+
+            $total = $total + ($price * $item->getQuantity());
         }
 
         $this->stockCost =  (float) $total;

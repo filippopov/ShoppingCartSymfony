@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-sm">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id Number</th>
+                            <th>Promotion Name</th>
+                            <th>For One Product</th>
+                            <th>For All Products</th>
+                            <th>For One Category</th>
+                            <th>Percentages</th>
+                            <th>Owner</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for promotion in promotions %}
+                            <tr>
+                                <td>{{ promotion.id }}</td>
+                                <td>
+                                    {{ promotion.promotionName }}
+                                </td>
+                                <td>
+                                    {% if promotion.getProductId is null %}
+                                        No
+                                    {% else %}
+                                        {{ promotion.getProductId.title }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if promotion.fullPromotion is null %}
+                                        No
+                                    {% else %}
+                                        Yes
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if promotion.getCategoryId is null %}
+                                        No
+                                    {% else %}
+                                        {{ promotion.getCategoryId.name }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {{ promotion.percentages }}%
+                                </td>
+                                <td>
+                                    {% if promotion.getUserId is null %}
+                                        Shop
+                                    {% else %}
+                                        {{ promotion.getUserId.username }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <form method="post" action="{{ path('delete_promotion', {'id':promotion.id, 'page':thisPage}) }}">
+                                        <button class="btn btn-default" type="submit">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% if maxPages > 1 %}
+                        <ul class="pagination pagination-sm">
+                            {# `«` arrow  #}
+                            <li {{ thisPage == 1 ? 'class="disabled"' }}>
+                                <a href="{{ path('all_promotions', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                            </li>
+
+                            {# Render each page number #}
+                            {% for i in 1..maxPages %}
+                                <li {{ thisPage == i ? 'class="active"' }}>
+                                    <a href="{{ path('all_promotions', {page: i}) }}">{{ i }}</a>
+                                </li>
+                            {% endfor %}
+
+                            {# `»` arrow #}
+                            <li {{ thisPage == maxPages ? 'class="disabled"' }}>
+                                <a href="{{ path('all_promotions', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

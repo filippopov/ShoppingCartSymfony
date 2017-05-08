@@ -50,6 +50,20 @@ class Promotions
      */
     private $user;
 
+    /**
+     * @ORM\Column(name="promotion_name", type="string", length=255, unique=true)
+     */
+    private $promotionName;
+
+    /**
+     * @ORM\Column(name="full_promotion", type="smallint", nullable=true)
+     */
+    private $fullPromotion;
+
+    /**
+     * @ORM\Column(name="percentages", type="integer")
+     */
+    private $percentages;
 
     /**
      * Get id
@@ -179,6 +193,54 @@ class Promotions
     public function getUserId()
     {
         return $this->user;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPromotionName()
+    {
+        return $this->promotionName;
+    }
+
+    /**
+     * @param string $promotionName
+     */
+    public function setPromotionName($promotionName)
+    {
+        $this->promotionName = $promotionName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFullPromotion()
+    {
+        return $this->fullPromotion;
+    }
+
+    /**
+     * @param int $fullPromotion
+     */
+    public function setFullPromotion($fullPromotion)
+    {
+        $this->fullPromotion = $fullPromotion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPercentages()
+    {
+        return $this->percentages;
+    }
+
+    /**
+     * @param mixed $percentages
+     */
+    public function setPercentages($percentages)
+    {
+        $this->percentages = $percentages;
     }
 }
 

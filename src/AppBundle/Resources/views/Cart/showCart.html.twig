@@ -22,7 +22,13 @@
                                 {% for item in basket.all %}
                                     <tr>
                                         <td><a href="{{ path("get_product", {'slug' : item.slug})}}" title="{{ item.title }}">{{ item.title }}</a></td>
-                                        <td> $ {{ item.price | number_format(2) }} </td>
+                                        <td>
+                                            {% if item.promotionPrice > 0.00 %}
+                                                <span style="text-decoration: line-through">$ {{ item.price | number_format(2) }}</span> $ {{ item.promotionPrice | number_format(2) }}
+                                            {% else %}
+                                                $ {{ item.price | number_format(2) }}
+                                            {% endif %}
+                                        </td>
                                         <td>
                                             <form action="{{ path('cart_update', { 'slug' : item.slug })}}" method="post" class="form-inline">
                                                 <select name="quantity" class="form-control input-sm">

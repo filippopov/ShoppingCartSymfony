@@ -47,3 +47,6 @@ services:
     app.pagination:
         class: AppBundle\Service\Pagination
         arguments: ['@doctrine.orm.entity_manager']
+    app.promotion_service:
+        class: AppBundle\Service\PromotionsService
+        arguments: ['@doctrine', '@doctrine.orm.entity_manager']

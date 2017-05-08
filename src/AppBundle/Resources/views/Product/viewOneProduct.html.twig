@@ -27,7 +27,13 @@
 
                 <h3>{{ product.title }}</h3>
                 <p>Category: {{ product.category.name }}</p>
-                <p>Price: <strong>$ {{ product.price }}</strong></p>
+
+                {% if product.promotionPrice > 0.00 %}
+                    <p>Price: <strong><span style="text-decoration: line-through">$ {{ product.price }}</span> $ {{ product.promotionPrice }}</strong></p>
+                {% else %}
+                    <p>Price: <strong>$ {{ product.price }}</strong></p>
+                {% endif %}
+
                 <p>Quantity: {{ product.stock }}</p>
                 <p>Description: {{ product.description }}</p>
                 {% if product.user is null %}

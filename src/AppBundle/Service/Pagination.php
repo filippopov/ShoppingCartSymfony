@@ -11,6 +11,7 @@ namespace AppBundle\Service;
 
 use AppBundle\Entity\Categories;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\Promotions;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
@@ -38,6 +39,20 @@ class Pagination
         return $paginator;
     }
 
+    public function getAllPromotions($currentPage = 1)
+    {
+        $repository = $this->manager->getRepository(Promotions::class);
+        // Create our query
+        $query = $repository->createQueryBuilder('p')
+            ->orderBy('p.id', 'asc')
+            ->getQuery();
+
+        // No need to manually get get the result ($query->getResult())
+        $paginator = $this->paginate($query, $currentPage);
+
+        return $paginator;
+    }
+
     public function getAllProductsEditor($currentPage = 1)
     {
         $repository = $this->manager->getRepository(Product::class);
@@ -53,9 +68,40 @@ class Pagination
         return $paginator;
     }
 
+    public function getAllPromotionsEditor($currentPage = 1)
+    {
+        $repository = $this->manager->getRepository(Promotions::class);
+        // Create our query
+        $query = $repository->createQueryBuilder('p')
+            ->where('p.user is null')
+            ->orderBy('p.id', 'asc')
+            ->getQuery();
+
+        // No need to manually get get the result ($query->getResult())
+        $paginator = $this->paginate($query, $currentPage);
+
+        return $paginator;
+    }
+
     public function getAllProductsUser($currentPage = 1, $userId)
     {
         $repository = $this->manager->getRepository(Product::class);
+        // Create our query
+        $query = $repository->createQueryBuilder('p')
+            ->where('p.user = :userId')
+            ->orderBy('p.id', 'asc')
+            ->setParameter(':userId', $userId)
+            ->getQuery();
+
+        // No need to manually get get the result ($query->getResult())
+        $paginator = $this->paginate($query, $currentPage);
+
+        return $paginator;
+    }
+
+    public function getAllPromotionsUser($currentPage = 1, $userId)
+    {
+        $repository = $this->manager->getRepository(Promotions::class);
         // Create our query
         $query = $repository->createQueryBuilder('p')
             ->where('p.user = :userId')

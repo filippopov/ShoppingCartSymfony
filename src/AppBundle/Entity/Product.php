@@ -55,6 +55,11 @@ class Product
     private $price;
 
     /**
+     * @ORM\Column(name="promotion_price", type="decimal", precision=10, scale=2)
+     */
+    private $promotionPrice;
+
+    /**
      * @var string
      * @Assert\Image(mimeTypes={"image/png", "image/jpeg", "image/jpg"}, maxSize="5M")
      * @ORM\Column(name="image", type="string", length=255, nullable=true)
@@ -413,6 +418,22 @@ class Product
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPromotionPrice()
+    {
+        return $this->promotionPrice;
+    }
+
+    /**
+     * @param mixed $promotionPrice
+     */
+    public function setPromotionPrice($promotionPrice)
+    {
+        $this->promotionPrice = $promotionPrice;
     }
 }
 

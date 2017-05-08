@@ -138,6 +138,13 @@ class OrderController extends Controller
                     $owner = $item->getUser();
                     $ownerId = $owner->getId();
                     $itemPrice = $item->getPrice();
+
+                    if ((float) $item->getPromotionPrice()) {
+                        if ($item->getPromotionPrice() < $item->getPrice()) {
+                            $itemPrice = $item->getPromotionPrice();
+                        }
+                    }
+
                     $itemQuantity = $item->getQuantity();
                     $itemsOnUsers[$ownerId] = [
                         'price' => $itemPrice,
