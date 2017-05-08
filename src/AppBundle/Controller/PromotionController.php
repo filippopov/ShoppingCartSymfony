@@ -4,6 +4,9 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Promotions;
 use AppBundle\Entity\User;
+use AppBundle\Form\PromotionsForOneCategoryType;
+use AppBundle\Form\PromotionsForOneProductType;
+use AppBundle\Form\PromotionsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -60,5 +63,54 @@ class PromotionController extends Controller
 
         $this->addFlash('success', 'Successfully remove promotion');
         return $this->redirectToRoute('all_products');
+    }
+
+    /**
+     * @Route("/promotion/add/all", name="add_promotion_all_products")
+     * @Security("has_role('ROLE_USER')")
+     * @Method("GET")
+     * @Template()
+     */
+    public function addPromotionForAllProductsAction()
+    {
+        $form = $this->createForm(PromotionsType::class);
+
+        return [
+            'promotionForm' => $form->createView()
+        ];
+    }
+
+    /**
+     * @Route("/promotion/add/by/product", name="add_promotion_one_products")
+     * @Security("has_role('ROLE_USER')")
+     * @Method("GET")
+     * @Template()
+     */
+    public function addPromotionForOneProductsAction()
+    {
+        $form = $this->createForm(PromotionsForOneProductType::class, null, [
+            'entity_manager' => $this->get('doctrine.orm.entity_manager')
+        ]);
+
+        return [
+            'promotionForm' => $form->createView()
+        ];
+    }
+
+    /**
+     * @Route("/promotion/add/by/category", name="add_promotion_one_category")
+     * @Security("has_role('ROLE_USER')")
+     * @Method("GET")
+     * @Template()
+     */
+    public function addPromotionForOneCategoryAction()
+    {
+        $form = $this->createForm(PromotionsForOneCategoryType::class, null, [
+            'entity_manager' => $this->get('doctrine.orm.entity_manager')
+        ]);
+
+        return [
+            'promotionForm' => $form->createView()
+        ];
     }
 }

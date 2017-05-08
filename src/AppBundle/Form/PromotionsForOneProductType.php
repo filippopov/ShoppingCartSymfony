@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Product;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -9,13 +10,27 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PromotionsType extends AbstractType
+class PromotionsForOneProductType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        /** @var \Doctrine\ORM\EntityManager $em */
+        $em = $options['entity_manager'];
+
+        /**
+         * @var Product[] $allProducts
+         */
+        $allProducts = $em->getRepository(Product::class)->findBy([],['title' => 'asc']);
+        $allProductsArr = [];
+        $allProductsArr[' -Please select- '] = '';
+
+        foreach ($allProducts as $product) {
+            $allProductsArr[$product->getTitle()] = $product->getId();
+        }
+
         $percentages = [];
         $percentages[' -Please select- '] = '';
         for ($i = 1; $i <= 100; $i++) {
@@ -23,6 +38,11 @@ class PromotionsType extends AbstractType
         }
 
         $builder->add('promotionName', TextType::class, ['required' => false])
+            ->add('product', ChoiceType::class, [
+                'choices' => $allProductsArr,
+                'required' => false,
+                'preferred_choices' => [' -Please select- ']
+            ])
             ->add('percentages', ChoiceType::class, [
                 'choices' => $percentages,
                 'preferred_choices' => [' -Please select- '],
@@ -40,6 +60,8 @@ class PromotionsType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'AppBundle\Entity\Promotions'
         ));
+
+        $resolver->setRequired('entity_manager');
     }
 
     /**

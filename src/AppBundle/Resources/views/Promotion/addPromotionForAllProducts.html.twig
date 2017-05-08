@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h3>Create Promotion</h3>
+                <hr>
+                {{ form_start(promotionForm) }}
+                <div class="form-group {% if not promotionForm.promotionName.vars.valid %}has-error{% endif %}">
+                    {{ form_label(promotionForm.promotionName) }}
+                    {{ form_widget(promotionForm.promotionName, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(promotionForm.promotionName) }}
+                </div>
+                <div class="form-group {% if not promotionForm.percentages.vars.valid %}has-error{% endif %}">
+                    {{ form_label(promotionForm.percentages) }}
+                    {{ form_widget(promotionForm.percentages, { 'attr': {'class': 'form-control'} }) }}
+                    {{ form_errors(promotionForm.percentages) }}
+                </div>
+                <div class="form-group {% if not promotionForm.dateFrom.vars.valid %}has-error{% endif %}">
+                    {{ form_label(promotionForm.dateFrom) }}
+                    {{ form_widget(promotionForm.dateFrom) }}
+                    {{ form_errors(promotionForm.dateFrom) }}
+                </div>
+                <div class="form-group {% if not promotionForm.dateTo.vars.valid %}has-error{% endif %}">
+                    {{ form_label(promotionForm.dateTo) }}
+                    {{ form_widget(promotionForm.dateTo) }}
+                    {{ form_errors(promotionForm.dateTo) }}
+                </div>
+
+                <button class="btn btn-default" type="submit">Add Promotion</button>
+
+                {{ form_end(promotionForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
