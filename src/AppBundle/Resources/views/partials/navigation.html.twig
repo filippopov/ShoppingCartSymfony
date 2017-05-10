@@ -44,8 +44,10 @@
                                 <li><a href="{{ path('all_promotions') }}">Promotions</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ path('add_promotion_one_products') }}">Set promotion for one products</a></li>
-                                <li><a href="{{ path('add_promotion_all_products') }}">Set promotion for all products</a></li>
-                                <li><a href="{{ path('add_promotion_one_category') }}">Set promotion for one category</a></li>
+                                {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDITOR') %}
+                                    <li><a href="{{ path('add_promotion_all_products') }}">Set promotion for all products</a></li>
+                                    <li><a href="{{ path('add_promotion_one_category') }}">Set promotion for one category</a></li>
+                                {% endif %}
                             </ul>
                         </li>
                     {% endif %}

@@ -7,6 +7,7 @@ use AppBundle\Entity\Product;
 use AppBundle\Entity\Promotions;
 use AppBundle\Entity\User;
 use AppBundle\Form\PromotionsForOneCategoryType;
+use AppBundle\Form\PromotionsForOneProductByUserType;
 use AppBundle\Form\PromotionsForOneProductType;
 use AppBundle\Form\PromotionsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -157,8 +158,17 @@ class PromotionController extends Controller
      */
     public function addPromotionForOneProductsAction()
     {
+        $user = null;
+
+        $securityContext = $this->get('security.authorization_checker');
+
+        if (! $securityContext->isGranted('ROLE_EDITOR') && ! $securityContext->isGranted('ROLE_ADMIN') && $securityContext->isGranted('ROLE_USER')) {
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+        }
+
         $form = $this->createForm(PromotionsForOneProductType::class, null, [
-            'entity_manager' => $this->get('doctrine.orm.entity_manager')
+            'entity_manager' => $this->get('doctrine.orm.entity_manager'),
+            'user' => $user
         ]);
 
         return [
@@ -174,10 +184,18 @@ class PromotionController extends Controller
      */
     public function addPromotionForOneProductsProcessAction(Request $request)
     {
+        $user = null;
+
+        $securityContext = $this->get('security.authorization_checker');
+
+        if (! $securityContext->isGranted('ROLE_EDITOR') && ! $securityContext->isGranted('ROLE_ADMIN') && $securityContext->isGranted('ROLE_USER')) {
+            $user = $this->get('security.token_storage')->getToken()->getUser();
+        }
 
         $promotion = new Promotions();
         $form = $this->createForm(PromotionsForOneProductType::class, $promotion, [
-            'entity_manager' => $this->get('doctrine.orm.entity_manager')
+            'entity_manager' => $this->get('doctrine.orm.entity_manager'),
+            'user' => $user
         ]);
 
         $form->handleRequest($request);
@@ -192,6 +210,14 @@ class PromotionController extends Controller
             if (empty($product)) {
                 $this->addFlash('error', 'Not found this product');
                 return $this->redirectToRoute('add_promotion_all_products');
+            }
+
+            if ($user) {
+                $checkIsYoursProduct = $this->getDoctrine()->getRepository(Product::class)->findBy(['user' => $user->getId(), 'id' => $productId]);
+                if (empty($checkIsYoursProduct)) {
+                    $this->addFlash('error', 'You Don\'t have such product');
+                    return $this->redirectToRoute('add_promotion_all_products');
+                }
             }
 
             $startDate = $promotion->getDateFrom()->format('Y-m-d H:i:s');
@@ -217,13 +243,6 @@ class PromotionController extends Controller
                 return $this->redirectToRoute('add_promotion_all_products');
             }
 
-            $user = null;
-
-            $securityContext = $this->get('security.authorization_checker');
-
-            if (! $securityContext->isGranted('ROLE_EDITOR') && ! $securityContext->isGranted('ROLE_ADMIN') && $securityContext->isGranted('ROLE_USER')) {
-                $user = $this->get('security.token_storage')->getToken()->getUser();
-            }
 
             $promotion->setUserId($user);
             $promotion->setProduct($product);

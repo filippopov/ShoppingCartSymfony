@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Product;
+use AppBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -19,11 +20,22 @@ class PromotionsForOneProductType extends AbstractType
     {
         /** @var \Doctrine\ORM\EntityManager $em */
         $em = $options['entity_manager'];
+        /** @var User $user */
+        $user = $options['user'];
 
-        /**
-         * @var Product[] $allProducts
-         */
-        $allProducts = $em->getRepository(Product::class)->findBy([],['title' => 'asc']);
+
+        if ($user) {
+            /**
+             * @var Product[] $allProducts
+             */
+            $allProducts = $em->getRepository(Product::class)->findBy(['user' => $user->getId()],['title' => 'asc']);
+        } else {
+            /**
+             * @var Product[] $allProducts
+             */
+            $allProducts = $em->getRepository(Product::class)->findBy([],['title' => 'asc']);
+        }
+
         $allProductsArr = [];
         $allProductsArr[' -Please select- '] = '';
 
@@ -62,6 +74,7 @@ class PromotionsForOneProductType extends AbstractType
         ));
 
         $resolver->setRequired('entity_manager');
+        $resolver->setRequired('user');
     }
 
     /**
