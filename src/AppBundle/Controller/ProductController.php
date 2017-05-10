@@ -307,6 +307,16 @@ class ProductController extends Controller
 
             $product->setSlug($slug);
 
+            $user = null;
+
+            $securityContext = $this->get('security.authorization_checker');
+
+            if (! $securityContext->isGranted('ROLE_EDITOR') && ! $securityContext->isGranted('ROLE_ADMIN') && $securityContext->isGranted('ROLE_USER')) {
+                $user = $this->get('security.token_storage')->getToken()->getUser();
+            }
+
+            $product->setUser($user);
+
             $categoryId = $product->getCategory();
 
             $category = $this->getDoctrine()->getRepository(Categories::class)->find($categoryId);
