@@ -68,7 +68,7 @@ class CartController extends Controller
 
             $this->addFlash("success", "Product: {$product->getTitle()}, successfully update in your cart!");
         } catch (QuantityExceededException $e) {
-            $this->addFlash("error", "Product: {$product->getTitle()}, no enough quantity");
+            $this->addFlash("error", "Product: {$product->getTitle()}, invalid quantity");
 
             return $this->redirectToRoute('show_cart');
         }

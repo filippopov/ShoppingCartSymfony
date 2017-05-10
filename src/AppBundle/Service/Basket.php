@@ -42,7 +42,7 @@ class Basket
     **/
     public function update(Product $product, $quantity)
     {
-        if ($product->getStock() < $quantity) {
+        if ($product->getStock() < $quantity || $quantity < 0) {
             throw new QuantityExceededException('Quantity Exception');
         }
 
