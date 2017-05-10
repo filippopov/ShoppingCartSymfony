@@ -130,6 +130,8 @@ class ProductController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
 
             $dateTimeNow = new \DateTime('now');
+            $product->setPromotionPrice(0);
+
             $product->setCreatedAt($dateTimeNow);
             $product->setUpdatedAt($dateTimeNow);
 

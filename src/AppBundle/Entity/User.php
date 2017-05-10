@@ -269,6 +269,11 @@ class User implements UserInterface
         $this->roles->add($role);
     }
 
+    public function removeRole(Role $role)
+    {
+        $this->roles->removeElement($role);
+    }
+
     /**
      * @return int
      */
