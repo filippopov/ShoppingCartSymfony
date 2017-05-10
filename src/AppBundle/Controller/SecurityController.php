@@ -76,6 +76,7 @@ class SecurityController extends Controller
             $userRole = $this->getDoctrine()->getRepository(Role::class)->findOneBy(['name' => 'ROLE_USER']);
             $user->addRoles($userRole);
             $user->setVirtualCash(Constants::DEFAULT_VIRTUAL_CASH);
+            $user->setIsBan(0);
 
             $user->setPassword(
                 $encoder->encodePassword($user, $user->getPasswordRaw())
