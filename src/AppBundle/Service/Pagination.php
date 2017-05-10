@@ -12,6 +12,7 @@ namespace AppBundle\Service;
 use AppBundle\Entity\Categories;
 use AppBundle\Entity\Product;
 use AppBundle\Entity\Promotions;
+use AppBundle\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
@@ -155,6 +156,19 @@ class Pagination
             ->getQuery();
 
         // No need to manually get get the result ($query->getResult())
+        $paginator = $this->paginate($query, $currentPage);
+
+        return $paginator;
+    }
+
+    public function getAllUsers($currentPage = 1)
+    {
+        $repository = $this->manager->getRepository(User::class);
+
+        $query = $repository->createQueryBuilder('u')
+            ->orderBy('u.id', 'asc')
+            ->getQuery();
+
         $paginator = $this->paginate($query, $currentPage);
 
         return $paginator;

@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="well well-sm">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Id Number</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Virtual Cash</th>
+                            <th>Is Ban</th>
+                            <th>Set Permissions</th>
+                            <th>Ban User</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>
+                                    {{ user.username }}
+                                </td>
+                                <td>
+                                    {{ user.email }}
+                                </td>
+                                <td>
+                                    {{ user.virtualCash }}
+                                </td>
+                                <td>
+                                    {% if user.isBan == 0 %}
+                                        No
+                                    {% else %}
+                                        Yes
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a class="btn btn-default" href="{{ path("add_permissions", {'id': user.id, 'page':thisPage}) }}">Permissions</a>
+                                </td>
+
+                                <td>
+                                    {% if user.isBan == 0 %}
+                                        <form method="post" action="{{ path("ban_user", {'id':user.id, 'page':thisPage}) }}">
+                                            <button class="btn btn-default" type="submit">Ban User</button>
+                                        </form>
+                                    {% else %}
+                                        <form method="post" action="{{ path("reverse_user_ban", {'id':user.id, 'page':thisPage}) }}">
+                                            <button class="btn btn-default" type="submit">Reverse</button>
+                                        </form>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    {% if maxPages > 1 %}
+                        <ul class="pagination pagination-sm">
+                            {# `«` arrow  #}
+                            <li {{ thisPage == 1 ? 'class="disabled"' }}>
+                                <a href="{{ path('all_users', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+                            </li>
+
+                            {# Render each page number #}
+                            {% for i in 1..maxPages %}
+                                <li {{ thisPage == i ? 'class="active"' }}>
+                                    <a href="{{ path('all_users', {page: i}) }}">{{ i }}</a>
+                                </li>
+                            {% endfor %}
+
+                            {# `»` arrow #}
+                            <li {{ thisPage == maxPages ? 'class="disabled"' }}>
+                                <a href="{{ path('all_users', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

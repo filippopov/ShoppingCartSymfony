@@ -27,6 +27,7 @@ class UserRepository extends \Doctrine\ORM\EntityRepository implements UserLoade
         $queryBuilder
             ->where($queryBuilder->expr()->eq('u.username', ':username'))
             ->orWhere($queryBuilder->expr()->eq('u.email', ':username'))
+            ->andWhere('u.isBan = 0')
             ->setParameter(':username', $username);
 
         return $queryBuilder->getQuery()->getOneOrNullResult();

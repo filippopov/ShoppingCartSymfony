@@ -55,6 +55,14 @@ class User implements UserInterface
      */
     private $password_raw;
 
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="is_ban", type="smallint")
+     */
+    private $isBan;
+
     /**
      * @var Role[]|ArrayCollection
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Role", inversedBy="users")
@@ -261,6 +269,20 @@ class User implements UserInterface
         $this->roles->add($role);
     }
 
+    /**
+     * @return int
+     */
+    public function getIsBan()
+    {
+        return $this->isBan;
+    }
 
+    /**
+     * @param int $isBan
+     */
+    public function setIsBan($isBan)
+    {
+        $this->isBan = $isBan;
+    }
 }
 
